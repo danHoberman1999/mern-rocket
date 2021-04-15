@@ -7,6 +7,9 @@ const bcrypt = require('bcrypt');
 const app = express();
 const User = require('./models/User');
 const Info = require('./models/Info');
+var path = require('path');
+
+
 
 //hello
 const db = "mongodb+srv://dhoberman:sunny06031999@cluster0.mcv6o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -26,6 +29,7 @@ const connectDB = async () => {
 connectDB();
 
 // Middleware
+
 app.use(session({
     secret: "verygoodsecret",
     resave: false,
