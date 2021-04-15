@@ -181,6 +181,13 @@ app.post('/infoLocator', (req, res) => {
 
 })
 
+router.get('/infoFound', (req, res) => {
+    Info.find({})
+        .then(foundUsers => User.findOne({ username: foundUsers[0].username })
+            .then(foundUser => res.json(foundUser))
+        )
+})
+
 app.post('/changeInfo', (req, res) => {
     console.log('Update info process started')
     User.updateOne({ username: req.user.username },
