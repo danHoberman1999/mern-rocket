@@ -181,7 +181,7 @@ app.post('/infoLocator', (req, res) => {
 
 })
 
-router.get('/infoFound', (req, res) => {
+app.get('/infoFound', (req, res) => {
     Info.find({})
         .then(foundUsers => User.findOne({ username: foundUsers[0].username })
             .then(foundUser => res.json(foundUser))
