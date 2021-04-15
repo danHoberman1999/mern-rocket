@@ -182,13 +182,13 @@ function UserInfo(props) {
 
 
 
-    // useEffect(() => {
-    //     fetch('/infoFound').then(res => {
-    //         if (res.ok) {
-    //             return res.json()
-    //         }
-    //     }).then(jsonRes => setUsers(jsonRes))
-    // })
+    useEffect(() => {
+        fetch('/infoFound').then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then(jsonRes => setUsers(jsonRes))
+    })
 
 
 

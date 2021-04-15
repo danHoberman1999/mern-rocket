@@ -188,13 +188,13 @@ function MyProfile(props) {
         setEdit(true)
     }
 
-    // useEffect(() => {
-    //     fetch("/userInfo").then(res => {
-    //         if (res.ok) {
-    //             return res.json()
-    //         }
-    //     }).then(jsonRes => setUser(jsonRes))
-    // })
+    useEffect(() => {
+        fetch("/userInfo").then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then(jsonRes => setUser(jsonRes))
+    })
 
     function handleChange(event) {
 
