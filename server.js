@@ -86,7 +86,7 @@ passport.use(new localStrategy(function (username, password, done) {
     });
 }));
 
-const server_host = process.env.NODE_ENV === "production" ? "/auth/google/callback" : "http://localhost:8080/auth/google/callback"
+//const server_host = process.env.NODE_ENV === "production" ? "/auth/google/callback" : "http://localhost:8080/auth/google/callback"
 
 
 // if (process.env.NODE_ENV ==="production"){
@@ -99,7 +99,7 @@ const server_host = process.env.NODE_ENV === "production" ? "/auth/google/callba
 passport.use(new GoogleStrategy({
     clientID: "133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com",
     clientSecret: "FBblFe-YuQHqkuYVuwfVeMtc",
-    callbackURL: server_host
+    callbackURL: "/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, cb) {
 
@@ -227,13 +227,13 @@ app.get('/auth/google', passport.authenticate('google', {
 //     server_host1 = "http://localhost:3000/"
 // }
 
-const server_host1 = process.env.NODE_ENV === "production" ? "/" : "http://localhost:3000/"
+//const server_host1 = process.env.NODE_ENV === "production" ? "/" : "http://localhost:3000/"
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect(server_host1)
+    res.redirect("/")
   });
 
 
