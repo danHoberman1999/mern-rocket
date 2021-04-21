@@ -226,7 +226,7 @@ function LogIn(props) {
                 </Button>
                     
                        
-                            <a className="google-button-link" class="btn btn-outline-dark" href="http://localhost:8080/auth/google" role="button">
+                            <a className="google-button-link" class="btn btn-outline-dark" href="/auth/google" role="button">
                                 <img className ="google-button"  alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
                                 Login with Google
                             </a>
