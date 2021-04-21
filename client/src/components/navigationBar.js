@@ -17,7 +17,8 @@ const Styles = styled.div`
   }
 
   .navbar-brand{
-      color: #f5f5f7;
+      color: #FFD700;
+      padding-bottom: 12px;
       font-weight: 400;
       font-size: 25px;
       margin: auto;
@@ -38,9 +39,11 @@ const Styles = styled.div`
   .log-in{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: large;
-    color: #f5f5f7
+    color: #f5f5f7;
+    border-radius: 8px;
+    border: 2px solid #d8d8d8;
     &:hover{
-        color: #f5f5f7 !important;
+        border: 2px solid grey;
     }
     
   }
@@ -48,9 +51,11 @@ const Styles = styled.div`
   .log-out{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: large;
-    color: #f5f5f7
+    color: #f5f5f7;
+    border-radius: 8px;
+    border: 2px solid #d8d8d8;
     &:hover{
-        color: #f5f5f7 !important;
+        border: 2px solid grey;
     }
   }
 
