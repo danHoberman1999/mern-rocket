@@ -86,11 +86,13 @@ passport.use(new localStrategy(function (username, password, done) {
     });
 }));
 
+const server_host = process.env.NODE_ENV === "production" ? "https://mern-rocket.herokuapp.com/auth/google/callback" : "http://localhost:8080/auth/google/callback"
+
 // Google Strategy
 passport.use(new GoogleStrategy({
     clientID: "133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com",
     clientSecret: "FBblFe-YuQHqkuYVuwfVeMtc",
-    callbackURL: "http://localhost:8080/auth/google/callback"
+    callbackURL: server_host
 },
     function (accessToken, refreshToken, profile, cb) {
 
@@ -212,12 +214,17 @@ app.get('/auth/google', passport.authenticate('google', {
     ]
 }));
 
+const server_host1 = process.env.NODE_ENV === "production" ? "https://mern-rocket.herokuapp.com" : "http://localhost:3000/"
+
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect("http://localhost:3000/")
+    res.redirect(server_host1)
   });
+
+
+  
 
 
 // app.post('/upload', upload.single('photo'), (req, res) => {
