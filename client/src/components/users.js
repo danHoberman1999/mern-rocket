@@ -37,7 +37,7 @@ const Styles = styled.div`
 function User(props) {
 
 
-    const [view, setView] = useState(false);
+    const [view, setView] = useState(true);
 
     function handleView() {
         setView(!view)
@@ -117,7 +117,7 @@ function User(props) {
                             <Col>
 
                                 <Form.Check
-                                    defaultChecked={false}
+                                    defaultChecked={true}
                                     type="switch"
                                     id="sort-switch"
                                     name="sort-switch"
@@ -127,7 +127,7 @@ function User(props) {
                             </Col>
                             <Col>
                                 <Form.Check
-                                    defaultChecked={false}
+                                    defaultChecked={true}
                                     type="switch"
                                     id="view-switch"
                                     name="view-switch"

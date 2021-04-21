@@ -2,13 +2,14 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import axios from 'axios';
+import login from '../assets/login.png';
 
 const Styles = styled.div`
   .navbar {
-    background-color: white;
+    background-color: #333333;
   }
   .navbar-nav .nav-link {
-    color: black;
+    color: #d8d8d8;
     &:hover {
       color: grey;
     }
@@ -16,39 +17,40 @@ const Styles = styled.div`
   }
 
   .navbar-brand{
-      color: #4B0082;
-      font-weight: 990;
+      color: #f5f5f7;
+      font-weight: 400;
       font-size: 25px;
+      margin: auto;
     &:hover{
-        color: #2F4F4F;
+        color: #f5f5f7 !important;
     }
   }
  
   .sign-up{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: large;
-    background-color: white;
+    color: #333333;
+    &:hover{
+        color: #f5f5f7 !important;
+    }
   }
 
   .log-in{
-    border-radius: 8px;
-    background-color: rgba(185,89,188,1);
-    color: white;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: large;
+    color: #f5f5f7
     &:hover{
-        background-color: #79a7d3;
+        color: #f5f5f7 !important;
     }
     
   }
 
   .log-out{
-      border-radius: 8px;
-    background-color: rgba(185,89,188,1);
-    color: black;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: large;
+    color: #f5f5f7
     &:hover{
-        background-color: #48D1CC;
-        font-size: large;
+        color: #f5f5f7 !important;
     }
   }
 

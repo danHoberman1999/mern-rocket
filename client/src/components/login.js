@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import NavigationBar from './navigationBar';
 import { Redirect } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
 import Recaptcha from 'react-recaptcha';
 
 
