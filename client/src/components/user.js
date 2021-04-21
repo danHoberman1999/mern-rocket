@@ -4,6 +4,7 @@ import Layout from './layout'
 import NavigationBar from './navigationBar';
 import userProfile from '../assets/user.gif'
 import styled from 'styled-components';
+import emblem from '../assets/fire.gif'
 
 const Styles = styled.div`
   .circle-img{
@@ -205,6 +206,7 @@ function UserInfo(props) {
                     <Layout className="layout">
                         <Form className="form" >
                             <img className="circle-img" src={userProfile} alt="avatar_img" />
+                            <img className="emblem" src={emblem} alt="pngTree" />
                             <div className="wrapper">
                                 <h1 className="username">{user.username}</h1>
                             </div>

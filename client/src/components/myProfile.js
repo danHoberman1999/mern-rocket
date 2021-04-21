@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import NavigationBar from './navigationBar';
-import { Container, Col, Form, InputGroup, Button } from 'react-bootstrap';
+import { Container, Col, Form } from 'react-bootstrap';
 import Layout from './layout'
 import userProfile from '../assets/user.gif'
+import emblem from '../assets/fire.gif'
+import camera from '../assets/camera.png'
 import editImage from '../assets/editImage.png'
 import { Redirect } from 'react-router-dom'
 import styled from 'styled-components';
@@ -108,6 +110,25 @@ $body-background: #353535;
         }
   }
 
+  .button-3{
+      border-radius: 50%;
+        border: 2px solid black;
+        width: 80px;
+        height: 80px;
+        position: relative;
+        float: right;
+        margin-bottom: 20px;
+        margin-right: 680px;
+        cursor: pointer;
+        background-color: white;
+        color: blue;
+        top: -40px;
+        transition: transform .7s ease-in-out;
+        &:hover{
+            transform: rotate(40deg);
+        }
+  }
+
  
   .bottom-group{
       margin-bottom: 60px;
@@ -131,6 +152,13 @@ $body-background: #353535;
   .form-label{
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       font-weight: 600;
+  }
+
+   .emblem{
+        width: 40px;
+        height: 40px;
+        margin: auto;
+        display: inline;
   }
 
   .edit-info{
@@ -160,6 +188,13 @@ function MyProfile(props) {
 
     const [redirectTo, setRedirectTo] = useState(null)
 
+    const [image, setImage] = useState({
+        _id: '',
+        photo: ''
+    })
+
+
+
 
     const [user, setUser] = useState({
         firstname: '',
@@ -184,6 +219,8 @@ function MyProfile(props) {
         email: '...'
     })
 
+
+
     function handleClick(event) {
         setEdit(true)
     }
@@ -195,6 +232,22 @@ function MyProfile(props) {
             }
         }).then(jsonRes => setUser(jsonRes))
     })
+
+    useEffect(() => {
+        fetch("/userPhoto").then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then(jsonRes => setImage(jsonRes))
+    })
+
+    // console.log("pathing" + image.photo)
+    // console.log("user: " + user.firstname)
+
+    // var imageLink = './' + image.photo
+    // console.log(imageLink)
+
+    //var imageName = require(imageLink)
 
     function handleChange(event) {
 
@@ -246,6 +299,7 @@ function MyProfile(props) {
                         <Layout className="layout">
                             <Form className="form" >
                                 <img className="circle-img" src={userProfile} alt="avatar_img" />
+                                <img className="emblem" src={emblem} alt="pngTree" />
                                 <div className="wrapper">
                                     <h1 className="username">{props.updateUser}</h1>
                                 </div>
@@ -334,11 +388,14 @@ function MyProfile(props) {
                                         />
                                     </Form.Group>
                                 </Form.Row>
-                                {edit ? (null) : (<h3 className="edit-control">Click button to edit: </h3>)}
+                                {edit ? (null) : (<h3 className="edit-control">Complete profile: </h3>)}
                                 {edit ? (
                                     <button className="button-2" onClick={handleClick2}>Submit</button>
                                 ) : (
-                                    <a href="#" onClick={handleClick}><img className="button" src={editImage}></img></a>
+                                    <div>
+                                        <a href="#" onClick={handleClick}><img className="button" src={editImage}></img></a>
+                                        <a href="/profile-upload" onClick={handleClick}><img className="button-3" src={camera}></img></a>
+                                    </div>
                                 )}
 
                             </Form>

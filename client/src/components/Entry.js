@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import { Button, Col } from 'react-bootstrap';
 import user from '../assets/blinker.gif'
+
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
@@ -21,6 +22,8 @@ const Styles = styled.div`
         margin: auto;
         display: block;
   }
+
+ 
 
   .username, .address, .age, .more{
       text-align: center;
@@ -74,6 +77,7 @@ function Entry(props) {
                 <Col>
                     <div className="user-control">
                         <img className="img" src={user} alt="icons8" />
+
                         <h3 className="username" >Firstname: {props.firstname}</h3>
                         <hr></hr>
                         <h3 className="address" >Lastname: {props.lastname}</h3>

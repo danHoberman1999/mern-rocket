@@ -7,7 +7,10 @@ import LogIn from "./components/login";
 import NoMatch from "./components/noMatch";
 import PrivacyPolicy from "./components/privacyPolicy";
 import MyProfile from "./components/myProfile";
+import ProfileUpload from "./components/profileUpload";
+import Payment from "./components/payment";
 import User from "./components/user";
+import User2 from "./components/users2";
 import axios from 'axios';
 
 
@@ -41,7 +44,7 @@ function App() {
         })
     }
 
-    getUser();
+    //getUser();
 
 
     return (
@@ -62,6 +65,12 @@ function App() {
                     )} />
                     <Route path='/sign-up' render={() => (
                         <SignUp loggedIn={user.loggedIn} />
+                    )} />
+                    <Route path='/profile-upload' render={() => (
+                        <ProfileUpload loggedIn={user.loggedIn} />
+                    )} />
+                    <Route path='/payment' render={() => (
+                        <Payment loggedIn={user.loggedIn} />
                     )} />
                     <Route path='/log-in' render={() => (
                         <LogIn loggedIn={user.loggedIn} />

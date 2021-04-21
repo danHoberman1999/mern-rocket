@@ -6,8 +6,8 @@ import axios from 'axios';
 import NavigationBar from './navigationBar';
 import { Redirect } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
-import FacebookLogin from 'react-facebook-login';
 import Recaptcha from 'react-recaptcha';
+import { GoogleLogout } from 'react-google-login';
 
 
 
@@ -53,7 +53,7 @@ const Styles = styled.div`
     background-color: rgba(185,89,188,1);
   }
 
-  .google-button, .facebook-button, .google-recaptcha{
+  .google-button, .google-recaptcha{
     text-align:center !important;
     display: block !important;
     margin: 0 auto 2em auto !important;
@@ -123,9 +123,10 @@ function LogIn(props) {
         console.log(response);
     }
 
-    const responseFacebook = (response) => {
-        console.log(response);
+    const logout = () => {
+        console.log("logout success");
     }
+
 
     const [captcha, setCaptcha] = useState(false)
 
@@ -223,16 +224,15 @@ function LogIn(props) {
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}
-                        isSignedIn={true}
-
+                        isSignedIn={false}
                     />
 
-                    <FacebookLogin className="facebook-button"
-                        appId="205646574320139"
-                        autoLoad={false}
-                        callback={responseFacebook}
+                    <GoogleLogout className="google-button"
+                        clientId="133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com"
+                        buttonText="Logout"
+                        onSuccess={responseGoogle}
+                        isSignedIn={false}
                     />
-
 
                 </Form>
 

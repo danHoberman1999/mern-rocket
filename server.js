@@ -6,9 +6,12 @@ const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const app = express();
 const User = require('./models/User');
+const Test = require('./models/Test');
 const Info = require('./models/Info');
-var path = require('path');
-
+let path = require('path');
+const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 
 //hello
@@ -41,6 +44,7 @@ app.use(express.json());
 // Passport.js
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 
 
@@ -81,6 +85,158 @@ passport.use(new localStrategy(function (username, password, done) {
         });
     });
 }));
+
+// Google Strategy
+passport.use(new GoogleStrategy({
+    clientID: "133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com",
+    clientSecret: "FBblFe-YuQHqkuYVuwfVeMtc",
+    callbackURL: "http://localhost:3000/log-in/callback"
+},
+    function (accessToken, refreshToken, profile, cb) {
+        firstname = "...",
+            lastname = "...",
+            birth = "...",
+            gender = "...",
+            phone = "...",
+            address = "...",
+            city = "...",
+            state = "...",
+            addressShip = "...",
+            cityShip = "...",
+            stateShip = "...",
+            zipShip = "...",
+            skill1 = "...",
+            skill2 = "...",
+            skill3 = "...",
+            skiing = "...",
+            react = "...",
+            zip = "...",
+            email = "...",
+            password = '...',
+            username = profile.id,
+
+            firstname = firstname.toLowerCase();
+        lastname = lastname.toLowerCase();
+
+
+        User.findOrCreate({ username: profile.id }, function (err, user) {
+            const newUser = new User({
+                firstname,
+                lastname,
+                username,
+                birth,
+                gender,
+                phone,
+                address,
+                city,
+                state,
+                zip,
+                addressShip,
+                cityShip,
+                stateShip,
+                zipShip,
+                skill1,
+                skill2,
+                skill3,
+                skiing,
+                react,
+                email,
+                password,
+            })
+            newUser.save((err, savedUser) => {
+                if (err) {
+                    console.log('error' + err)
+                }
+                console.log('new user added to database')
+                res.json(savedUser)
+            });
+        });
+    }
+));
+
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'client/src/assets');
+    },
+    filename: function (req, file, cb) {
+        cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (allowedFileTypes.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+let upload = multer({ storage, fileFilter });
+
+var type = upload.single('file')
+
+
+app.post('/upload', type, (req, res) => {
+
+    if (req.file.path === null) {
+        return res.status(400).json({ msg: "No file was uploaded" });
+    }
+
+    const photo = req.file.path;
+
+    console.log("Photo: " + photo)
+
+    const newTestData = {
+        photo
+    }
+    const newTest = new Test(newTestData);
+
+    newTest.save()
+        .then(() => res.json('Info Added'))
+        .catch(err => res.status(400).json('Error: ' + err))
+});
+
+
+// More google stuff
+app.get('/log-in',
+    passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/log-in/callback', passport.authenticate('google', err => { console.log(err) }), (req, res) => {
+    //res.redirect('/');
+    console.log("hello")
+})
+
+
+// app.post('/upload', upload.single('photo'), (req, res) => {
+//     if (req.files === null) {
+//         return res.status(400).json({ msg: "No file was uploaded" });
+//     }
+
+//     const photo = req.files.file;
+
+//     User.updateOne({ username: req.user.username },
+//         {
+//             $set:
+//             {
+//                 photo: photo
+//             }
+//         }, function (err) {
+//             if (err) {
+//                 return res.status(500).json({ err })
+//                 console.log(err);
+//             }
+//         });
+// });
+
+app.get('/profileImg', (req, res) => {
+    Info.find({})
+        .then(foundUsers => User.findOne({ username: foundUsers[0].username })
+            .then(foundUser => res.json(foundUser))
+        )
+})
 
 
 
@@ -190,6 +346,7 @@ app.get('/infoFound', (req, res) => {
 
 app.post('/changeInfo', (req, res) => {
     console.log('Update info process started')
+
     User.updateOne({ username: req.user.username },
         {
             $set:
@@ -261,6 +418,12 @@ app.get('/userInfo', (req, res) => {
         username: req.user.username
     }).then(foundUser => {
         res.json(foundUser)
+    })
+})
+
+app.get('/userPhoto', (req, res) => {
+    Test.findOne({}).then(foundTest => {
+        res.json(foundTest)
     })
 })
 

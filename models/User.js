@@ -23,6 +23,9 @@ const UserSchema = new mongoose.Schema({
     react: { type: String, required: false },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    photo: {
+        type: String
+    },
     date: {
         type: Date,
         default: Date.now()

@@ -88,6 +88,8 @@ function NavigationBar(props) {
                             <Nav.Item className="fonts"><Nav.Link href="/">Home</Nav.Link></Nav.Item>
                             <Nav.Item className="fonts"><Nav.Link href="/my-profile">My Profile</Nav.Link></Nav.Item>
                             <Nav.Item className="fonts"><Nav.Link href="/users">Users</Nav.Link></Nav.Item>
+                            <Nav.Item className="fonts"><Nav.Link href="/payment">Donation</Nav.Link></Nav.Item>
+
                         </Nav>
                         <Nav className="ml-auto">
                             <Nav.Item className='log-out'><Nav.Link href="/" onClick={logOut}>Sign out</Nav.Link></Nav.Item>
@@ -108,6 +110,7 @@ function NavigationBar(props) {
                         <Nav className="ml-auto">
                             <Nav.Item className="sign-up"><Nav.Link href="/sign-up">Sign-Up</Nav.Link></Nav.Item>
                             <Nav.Item className="log-in"><Nav.Link href="/log-in">Log-In</Nav.Link></Nav.Item>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

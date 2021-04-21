@@ -91,6 +91,8 @@ function SignUp(props) {
 
 	const [address, setAddress] = useState(true);
 
+	const [completed, setCompleted] = useState(true);
+
 	function handleAddress() {
 		setAddress(!address)
 	}
@@ -236,8 +238,11 @@ function SignUp(props) {
 
 			if (input.skiing == '') {
 				input.skiing = 'No Answer';
+				setCompleted(!completed);
 			}
 			event.preventDefault();
+
+
 
 			const newUser = {
 				firstname: input.firstname,
@@ -260,7 +265,8 @@ function SignUp(props) {
 				skiing: input.skiing,
 				react: input.react,
 				email: input.email,
-				password: input.password
+				password: input.password,
+				completed: completed
 			}
 
 
