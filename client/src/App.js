@@ -44,7 +44,7 @@ function App() {
         })
     }
 
-    //getUser();
+    getUser();
 
 
     return (

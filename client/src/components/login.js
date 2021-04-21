@@ -7,7 +7,6 @@ import NavigationBar from './navigationBar';
 import { Redirect } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
 import Recaptcha from 'react-recaptcha';
-import { GoogleLogout } from 'react-google-login';
 
 
 
@@ -119,19 +118,10 @@ function LogIn(props) {
         }
     };
 
-    const responseGoogle = (response) => {
-        console.log(response);
-    }
-
-    const logout = () => {
-        console.log("logout success");
-    }
-
 
     const [captcha, setCaptcha] = useState(false)
 
-
-
+   
     const [redirectTo, setRedirectTo] = useState(null)
 
     const [error, setError] = useState('')
@@ -218,21 +208,8 @@ function LogIn(props) {
                     <Button onClick={handleClick} className="custom-btn" variant="primary" type="submit">
                         Log In
                 </Button>
-                    <GoogleLogin className="google-button"
-                        clientId="133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com"
-                        buttonText="Login"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                        isSignedIn={false}
-                    />
-
-                    <GoogleLogout className="google-button"
-                        clientId="133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com"
-                        buttonText="Logout"
-                        onSuccess={responseGoogle}
-                        isSignedIn={false}
-                    />
+                
+                     <a href="http://localhost:8080/auth/google" >Button </a>
 
                 </Form>
 

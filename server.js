@@ -90,10 +90,10 @@ passport.use(new localStrategy(function (username, password, done) {
 passport.use(new GoogleStrategy({
     clientID: "133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com",
     clientSecret: "FBblFe-YuQHqkuYVuwfVeMtc",
-    callbackURL: "http://localhost:3000/log-in/callback"
+    callbackURL: "http://localhost:8080/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, cb) {
-        firstname = "...",
+       let firstname = "...",
             lastname = "...",
             birth = "...",
             gender = "...",
@@ -113,13 +113,13 @@ passport.use(new GoogleStrategy({
             zip = "...",
             email = "...",
             password = '...',
-            username = profile.id,
+            username = profile.id
 
-            firstname = firstname.toLowerCase();
-        lastname = lastname.toLowerCase();
-
-
-        User.findOrCreate({ username: profile.id }, function (err, user) {
+        User.findOne({username: profile.id}).then((currentUser)=>{
+        if(currentUser){
+          //if we already have a record with the given profile ID
+          cb(null, currentUser)
+        } else{     
             const newUser = new User({
                 firstname,
                 lastname,
@@ -148,11 +148,13 @@ passport.use(new GoogleStrategy({
                     console.log('error' + err)
                 }
                 console.log('new user added to database')
-                res.json(savedUser)
-            });
+                cb(null, savedUser)
+             });
+            }
         });
     }
 ));
+
 
 
 
@@ -200,14 +202,16 @@ app.post('/upload', type, (req, res) => {
 });
 
 
-// More google stuff
-app.get('/log-in',
-    passport.authenticate('google', { scope: ['profile'] }));
 
-app.get('/log-in/callback', passport.authenticate('google', err => { console.log(err) }), (req, res) => {
-    //res.redirect('/');
-    console.log("hello")
-})
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("http://localhost:3000/");
+  });
 
 
 // app.post('/upload', upload.single('photo'), (req, res) => {
