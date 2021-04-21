@@ -86,14 +86,14 @@ passport.use(new localStrategy(function (username, password, done) {
     });
 }));
 
-const server_host = process.env.NODE_ENV === "production" ? "https://mern-rocket.herokuapp.com/auth/google/callback" : "http://localhost:8080/auth/google/callback"
+const server_host = process.env.NODE_ENV === "production" ? "/auth/google/callback" : "http://localhost:8080/auth/google/callback"
 
 
-if (process.env.NODE_ENV ==="production"){
-    server_host = "https://mern-rocket.herokuapp.com/auth/google/callback"
-}else{
-    server_host = "http://localhost:8080/auth/google/callback"
-}
+// if (process.env.NODE_ENV ==="production"){
+//     server_host = "https://mern-rocket.herokuapp.com/auth/google/callback"
+// }else{
+//     server_host = "http://localhost:8080/auth/google/callback"
+// }
 
 // Google Strategy
 passport.use(new GoogleStrategy({
@@ -221,13 +221,13 @@ app.get('/auth/google', passport.authenticate('google', {
     ]
 }));
 
-if (process.env.NODE_ENV ==="production"){
-    server_host1 = "https://mern-rocket.herokuapp.com"
-}else{
-    server_host1 = "http://localhost:3000/"
-}
+// if (process.env.NODE_ENV ==="production"){
+//     server_host1 = "https://mern-rocket.herokuapp.com"
+// }else{
+//     server_host1 = "http://localhost:3000/"
+// }
 
-//const server_host1 = process.env.NODE_ENV === "production" ? "https://mern-rocket.herokuapp.com" : "http://localhost:3000/"
+const server_host1 = process.env.NODE_ENV === "production" ? "/" : "http://localhost:3000/"
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
