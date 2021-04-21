@@ -93,6 +93,8 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:8080/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, cb) {
+
+        console.log(profile.emails);
        let firstname = "...",
             lastname = "...",
             birth = "...",
@@ -113,9 +115,9 @@ passport.use(new GoogleStrategy({
             zip = "...",
             email = "...",
             password = '...',
-            username = profile.id
+            username = profile.emails[0].value
 
-        User.findOne({username: profile.id}).then((currentUser)=>{
+        User.findOne({username: profile.emails[0].value}).then((currentUser)=>{
         if(currentUser){
           //if we already have a record with the given profile ID
           cb(null, currentUser)
@@ -203,14 +205,18 @@ app.post('/upload', type, (req, res) => {
 
 
 
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+app.get('/auth/google', passport.authenticate('google', {
+    scope: [
+        'https://www.googleapis.com/auth/userinfo.profile',
+        'https://www.googleapis.com/auth/userinfo.email'
+    ]
+}));
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect("http://localhost:3000/");
+    res.redirect("http://localhost:3000/")
   });
 
 

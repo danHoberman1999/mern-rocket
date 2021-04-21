@@ -52,6 +52,8 @@ const Styles = styled.div`
     background-color: rgba(185,89,188,1);
   }
 
+  
+
   .google-button, .google-recaptcha{
     text-align:center !important;
     display: block !important;
@@ -100,6 +102,20 @@ const Styles = styled.div`
   .error{
       color: red;
       margin-top: 5px;
+  }
+
+  .google-button-link{
+    margin-bottom: 3px;
+    margin-right: 3px;
+  }
+
+  .google-button{
+    text-align:center !important;
+    display: block !important;
+    margin: 0 auto 2em auto !important;
+    padding: 5px !important;
+    width: auto !important;
+    height: 50px !important;
   }
 
 `;
@@ -208,12 +224,14 @@ function LogIn(props) {
                     <Button onClick={handleClick} className="custom-btn" variant="primary" type="submit">
                         Log In
                 </Button>
-                
-                     <a href="http://localhost:8080/auth/google" >Button </a>
-
+                    
+                       
+                            <a className="google-button-link" class="btn btn-outline-dark" href="http://localhost:8080/auth/google" role="button">
+                                <img className ="google-button"  alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                Login with Google
+                            </a>
+                    
                 </Form>
-
-
             </Styles>
         )
     }

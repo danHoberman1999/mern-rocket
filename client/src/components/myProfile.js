@@ -247,7 +247,7 @@ function MyProfile(props) {
     // var imageLink = './' + image.photo
     // console.log(imageLink)
 
-    //var imageName = require(imageLink)
+    // var imageName = require(imageLink)
 
     function handleChange(event) {
 
