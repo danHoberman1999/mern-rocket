@@ -2,7 +2,6 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import axios from 'axios';
-import login from '../assets/login.png';
 
 const Styles = styled.div`
   .navbar {

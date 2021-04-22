@@ -1,11 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const TestSchema = new mongoose.Schema({
-
-    photo: {
-        type: String
-    }
+  photo: {
+    type: String,
+  },
 });
 
-module.exports = Test = mongoose.model('test', TestSchema);
-
+module.exports = Test = mongoose.model("test", TestSchema);
