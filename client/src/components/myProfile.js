@@ -223,6 +223,7 @@ function MyProfile(props) {
   const [redirectTo, setRedirectTo] = useState(null);
 
   const [image, setImage] = useState("");
+  const [completed, setCompleted] = useState(false);
 
   const [user, setUser] = useState({
     firstname: "",
@@ -259,6 +260,16 @@ function MyProfile(props) {
         }
       })
       .then((jsonRes) => setUser(jsonRes));
+  });
+
+  useEffect(() => {
+    fetch("/completed")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((response) => setCompleted(response[0].completed));
   });
 
   useEffect(() => {
@@ -317,6 +328,7 @@ function MyProfile(props) {
     setRedirectTo("/");
   };
 
+  console.log(completed);
   console.log(image);
 
   if (redirectTo) {
@@ -334,12 +346,23 @@ function MyProfile(props) {
                     Delete Account
                   </button>
                 </div>
-                <img
-                  className="circle-img"
-                  src={`/uploads/${image}`}
-                  alt="..."
-                />
-                <img className="emblem" src={emblem} alt="pngTree" />
+
+                {completed ? (
+                  <img
+                    className="circle-img"
+                    src={`/uploads/${image}`}
+                    alt="..."
+                  />
+                ) : (
+                  <img className="circle-img" src={userProfile} alt="icons8" />
+                )}
+
+                {completed ? (
+                  <img className="emblem" src={emblem} alt="pngTree" />
+                ) : (
+                  <h5>Finish Profile for emblem</h5>
+                )}
+
                 <div className="wrapper">
                   <h1 className="username">{props.updateUser}</h1>
                 </div>

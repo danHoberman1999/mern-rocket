@@ -6,11 +6,9 @@ const localStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const app = express();
 const User = require("./models/User");
-const Articles = require("./models/Test");
 const Info = require("./models/Info");
 let path = require("path");
 const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const accountSid = "AC5f50b2e6674e779427415de1a743240e";
 const authToken = "7abede696fa938ca268e949aa17cc416";
@@ -191,23 +189,34 @@ passport.use(
 );
 
 app.post("/upload", type, (req, res) => {
+  //convert this to set instead of new
   if (req.file.path === null) {
     return res.status(400).json({ msg: "No file was uploaded" });
   }
 
   const photo = req.file.originalname;
 
-  console.log("Photo: " + photo);
+  User.updateOne(
+    { username: req.user.username },
+    {
+      $set: {
+        photo: photo,
+        completed: true,
+      },
+    }
+  );
 
-  const newTestData = {
-    photo,
-  };
-  const newTest = new Test(newTestData);
+  //   console.log("Photo: " + photo);
 
-  newTest
-    .save()
-    .then(() => res.json("Info Added"))
-    .catch((err) => res.status(400).json("Error: " + err));
+  //   const newTestData = {
+  //     photo,
+  //   };
+  //   const newTest = new Test(newTestData);
+
+  //   newTest
+  //     .save()
+  //     .then(() => res.json("Info Added"))
+  //     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 app.get(
@@ -441,8 +450,14 @@ app.post("/deleteAccount", (req, res) => {
 });
 
 app.get("/userPhoto", (req, res) => {
-  Test.find()
-    .then((photo) => res.json(photo))
+  User.find({ username: req.user.username })
+    .then((data) => res.json(data))
+    .catch((err) => res.status(400).json(err));
+});
+
+app.get("/completed", (req, res) => {
+  User.find({ username: req.user.username })
+    .then((data) => res.json(data))
     .catch((err) => res.status(400).json(err));
 });
 
