@@ -56,7 +56,7 @@ const storage = multer.diskStorage({
     cb(null, "./client/public/uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname));
+    cb(null, file.originalname);
   },
 });
 
@@ -213,18 +213,6 @@ app.post("/upload", type, (req, res) => {
       }
     }
   );
-
-  //   console.log("Photo: " + photo);
-
-  //   const newTestData = {
-  //     photo,
-  //   };
-  //   const newTest = new Test(newTestData);
-
-  //   newTest
-  //     .save()
-  //     .then(() => res.json("Info Added"))
-  //     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 app.get(
