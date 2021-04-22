@@ -128,9 +128,8 @@ const Styles = styled.div`
     width: 80px;
     height: 80px;
     position: relative;
-    float: right;
+    float: left;
     margin-bottom: 20px;
-    margin-right: 680px;
     cursor: pointer;
     background-color: white;
     color: blue;
@@ -445,7 +444,7 @@ function MyProfile(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                {edit ? null : (
+                {completed ? null : (
                   <h3 className="edit-control">Complete profile: </h3>
                 )}
                 {edit ? (
@@ -457,11 +456,11 @@ function MyProfile(props) {
                     <a href="#" onClick={handleClick}>
                       <img className="button" src={editImage}></img>
                     </a>
-                    <a href="/profile-upload">
-                      <img className="button-3" src={camera}></img>
-                    </a>
                   </div>
                 )}
+                <a href="/profile-upload">
+                  <img className="button-3" src={camera}></img>
+                </a>
               </Form>
             </Layout>
           </Container>

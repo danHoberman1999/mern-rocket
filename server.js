@@ -12,6 +12,7 @@ const multer = require("multer");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const accountSid = "AC5f50b2e6674e779427415de1a743240e";
 const authToken = "7abede696fa938ca268e949aa17cc416";
+const { v4: uuidv4 } = require("uuid");
 
 //hello
 const db =
@@ -55,7 +56,7 @@ const storage = multer.diskStorage({
     cb(null, "./client/public/uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname));
   },
 });
 
@@ -196,6 +197,8 @@ app.post("/upload", type, (req, res) => {
 
   const photo = req.file.originalname;
 
+  console.log("upload process started");
+
   User.updateOne(
     { username: req.user.username },
     {
@@ -203,6 +206,11 @@ app.post("/upload", type, (req, res) => {
         photo: photo,
         completed: true,
       },
+    },
+    function (err, user) {
+      if (err) {
+        console.log(err);
+      }
     }
   );
 
@@ -459,6 +467,22 @@ app.get("/completed", (req, res) => {
   User.find({ username: req.user.username })
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json(err));
+});
+
+app.get("/completedStranger", (req, res) => {
+  Info.find({}).then((foundUsers) =>
+    User.findOne({ username: foundUsers[0].username }).then((data) =>
+      res.json(data)
+    )
+  );
+});
+
+app.get("/strangerPhoto", (req, res) => {
+  Info.find({}).then((foundUsers) =>
+    User.findOne({ username: foundUsers[0].username }).then((data) =>
+      res.json(data)
+    )
+  );
 });
 
 if (process.env.NODE_ENV === "production") {
