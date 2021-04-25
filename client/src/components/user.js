@@ -30,6 +30,10 @@ const Styles = styled.div`
   }
 
   .wrapper {
+    overflow: hidden;
+  }
+
+  .wrapper {
     text-align: center;
     h1 {
       color: #fff;
@@ -37,6 +41,7 @@ const Styles = styled.div`
       font-family: "ubuntu";
       text-transform: uppercase;
       font-weight: 700;
+
       font-family: "Josefin Sans", sans-serif;
       background: linear-gradient(
         to right,

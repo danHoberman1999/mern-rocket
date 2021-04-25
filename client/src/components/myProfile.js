@@ -130,6 +130,7 @@ const Styles = styled.div`
     position: relative;
     float: left;
     margin-bottom: 20px;
+    margin-left: 200px;
     cursor: pointer;
     background-color: white;
     color: blue;
@@ -278,6 +279,16 @@ function MyProfile(props) {
 
       .catch((error) => console.log(error));
   }, []);
+
+  // useEffect(() => {
+  //   fetch("/userPhoto")
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //     })
+  //     .then((response) => [setImage(response.data[0].photo)]);
+  // });
 
   function deleteAccount() {
     console.log("starting deletion process");

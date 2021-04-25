@@ -10,6 +10,7 @@ const Info = require("./models/Info");
 let path = require("path");
 const multer = require("multer");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 const accountSid = "AC5f50b2e6674e779427415de1a743240e";
 const authToken = "7abede696fa938ca268e949aa17cc416";
 const { v4: uuidv4 } = require("uuid");
@@ -112,6 +113,81 @@ const sendSms = (phone, message) => {
     })
     .then((message) => console.log(message.sid));
 };
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: "310987207075884",
+      clientSecret: "6d0993c88fdb8b61375514cfc78a6268",
+      callbackURL: "/auth/facebook/callback",
+      profileFields: ["id", "emails", "name"],
+    },
+    function (accessToken, refreshToken, profile, cb) {
+      console.log(profile.emails);
+      let firstname = "...",
+        lastname = "...",
+        birth = "...",
+        gender = "...",
+        phone = "...",
+        address = "...",
+        city = "...",
+        state = "...",
+        addressShip = "...",
+        cityShip = "...",
+        stateShip = "...",
+        zipShip = "...",
+        skill1 = "...",
+        skill2 = "...",
+        skill3 = "...",
+        skiing = "...",
+        react = "...",
+        zip = "...",
+        email = "...",
+        password = "...",
+        username = profile.emails[0].value;
+
+      User.findOne({ username: profile.emails[0].value }).then(
+        (currentUser) => {
+          if (currentUser) {
+            //if we already have a record with the given profile ID
+            cb(null, currentUser);
+          } else {
+            const newUser = new User({
+              firstname,
+              lastname,
+              username,
+              birth,
+              gender,
+              phone,
+              address,
+              city,
+              state,
+              zip,
+              addressShip,
+              cityShip,
+              stateShip,
+              zipShip,
+              skill1,
+              skill2,
+              skill3,
+              skiing,
+              react,
+              email,
+              password,
+            });
+            newUser.save((err, savedUser) => {
+              if (err) {
+                console.log("error" + err);
+              }
+              console.log("new user added to database");
+              cb(null, savedUser);
+            });
+          }
+        }
+      );
+    }
+  )
+);
 
 // Google Strategy
 passport.use(
@@ -228,6 +304,17 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
+
+app.get("/auth/facebook", passport.authorize("facebook", { scope: ["email"] }));
+
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { failureRedirect: "/login" }),
   function (req, res) {
     // Successful authentication, redirect home.
     res.redirect("/");
