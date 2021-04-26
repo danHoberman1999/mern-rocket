@@ -127,7 +127,7 @@ passport.use(
     {
       clientID: "310987207075884",
       clientSecret: "6d0993c88fdb8b61375514cfc78a6268",
-      callbackURL: "/auth/facebook/callback",
+      callbackURL: "https://net-rocket.herokuapp.com/auth/facebook/callback",
       profileFields: ["id", "emails", "name"],
     },
     function (accessToken, refreshToken, profile, cb) {
