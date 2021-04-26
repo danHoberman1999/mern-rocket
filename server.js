@@ -12,8 +12,8 @@ const multer = require("multer");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const accountSid = "AC5f50b2e6674e779427415de1a743240e";
-const authToken = "7abede696fa938ca268e949aa17cc416";
-const { v4: uuidv4 } = require("uuid");
+const authToken = "a9f6da10dd543c7cb248534f7def0928";
+const nodemailer = require("nodemailer");
 
 //hello
 const db =
@@ -113,6 +113,14 @@ const sendSms = (phone, message) => {
     })
     .then((message) => console.log(message.sid));
 };
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "net.rocket.mern@gmail.com",
+    pass: "Sunny06031999?",
+  },
+});
 
 passport.use(
   new FacebookStrategy(
@@ -398,8 +406,24 @@ app.post("/register", (req, res) => {
             if (err) {
               console.log("error" + err);
             }
+
+            let mailOptions = {
+              from: "net.rocket.mern@gmail.com",
+              to: email,
+              subject: "Welcome to net-rocket mern app",
+              text: "Email us if you have any questions about the app!",
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("Email sent: " + info.response);
+              }
+            });
             const welcomeMessage = firstname;
             sendSms(phone, welcomeMessage);
+            console.log(phone, welcomeMessage);
             console.log("new user added to database");
             res.json(savedUser);
           });

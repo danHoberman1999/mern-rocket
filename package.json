@@ -23,11 +23,13 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.12.3",
     "multer": "^1.4.2",
+    "nodemailer": "^6.5.0",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
+    "react-popup": "^0.10.0",
     "twilio": "^3.61.0",
     "uuid": "^8.3.2"
   }

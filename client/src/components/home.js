@@ -6,14 +6,14 @@ import "react-animated-term/dist/react-animated-term.css";
 import styled from "styled-components";
 
 const Styles = styled.div`
-
   .container {
     margin-top: 35px;
     margin-bottom: 35px;
+    overflow: hidden;
   }
 
-  body{
-      overflow: hidden !important;
+  body {
+    overflow: hidden;
   }
 `;
 
@@ -164,11 +164,14 @@ function Home(props) {
   return (
     <Styles>
       <React.Fragment>
-        <NavigationBar loggedIn={props.loggedIn} />
-
-        <Container className="container">
-          <Terminal lines={termLines} interval={80} height={450} />
-        </Container>
+        <html>
+          <body>
+            <NavigationBar loggedIn={props.loggedIn} />
+            <Container className="container">
+              <Terminal lines={termLines} interval={80} height={450} />
+            </Container>
+          </body>
+        </html>
       </React.Fragment>
     </Styles>
   );

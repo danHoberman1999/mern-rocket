@@ -10,6 +10,8 @@ import MyProfile from "./components/myProfile";
 import ProfileUpload from "./components/profileUpload";
 import Payment from "./components/payment";
 import User from "./components/user";
+import Engine from "./components/engineChat";
+import Simple from "./components/simpleChat";
 import axios from "axios";
 
 function App() {
@@ -59,6 +61,14 @@ function App() {
           <Route
             path="/users"
             render={() => <Users loggedIn={user.loggedIn} />}
+          />
+          <Route
+            path="/engine-chat"
+            render={() => <Engine loggedIn={user.loggedIn} />}
+          />
+          <Route
+            path="/simple-chat"
+            render={() => <Simple loggedIn={user.loggedIn} />}
           />
           <Route
             path="/user"
