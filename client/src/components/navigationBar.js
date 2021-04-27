@@ -5,24 +5,62 @@ import axios from "axios";
 
 const Styles = styled.div`
   .navbar {
-    background-color: #333333;
-  }
-  .navbar-nav .nav-link {
-    color: #d8d8d8;
-    &:hover {
-      color: grey;
+    background: #000;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100%;
+
+    @media screen and (max-width: 960px) {
+      transition: 0.8s all ease;
     }
-    margin: 0px 8px;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    padding: 0 24px;
+    max-width: 1100px;
+  }
+
+  .navbar-nav .nav-link {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    cursor: pointer;
+    text-decoration: none !important;
+
+    &:active {
+      border-bottom: 3px solid #01bf71;
+    }
+
+    &:hover {
+      color: #de67a3;
+    }
   }
 
   .navbar-brand {
-    color: #ffd700;
-    padding-bottom: 12px;
-    font-weight: 400;
-    font-size: 25px;
-    margin: auto;
+    color: #fff;
+    justify-self: flex-start;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+    font-weight: bold;
+    text-decoration: none !important;
     &:hover {
-      color: #f5f5f7 !important;
+      color: #de67a3;
     }
   }
 
@@ -36,24 +74,42 @@ const Styles = styled.div`
   }
 
   .log-in {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: large;
-    color: #f5f5f7;
-    border-radius: 8px;
-    border: 2px solid #d8d8d8;
+    border-radius: 50px;
+    background: linear-gradient(to left, #ab68ca, #de67a3) #de67a3;
+    white-space: nowrap;
+    padding: 10px 22px;
+    color: #010606;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none !important;
+
     &:hover {
-      border: 2px solid grey;
+      transition: all 0.2s ease-in-out;
+      background: #fff;
+      color: #010606;
     }
   }
 
   .log-out {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: large;
-    color: #f5f5f7;
-    border-radius: 8px;
-    border: 2px solid #d8d8d8;
+    border-radius: 50px;
+    background: linear-gradient(to left, #ab68ca, #de67a3);
+    white-space: nowrap;
+    padding: 10px 22px;
+    color: #010606;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none !important;
+
     &:hover {
-      border: 2px solid grey;
+      transition: all 0.2s ease-in-out;
+      background: #fff;
+      color: #010606;
     }
   }
 
