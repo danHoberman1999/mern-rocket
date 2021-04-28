@@ -9,15 +9,15 @@ const User = require("./models/User");
 const Info = require("./models/Info");
 let path = require("path");
 const multer = require("multer");
+require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
-const accountSid = "AC5f50b2e6674e779427415de1a743240e";
-const authToken = "a9f6da10dd543c7cb248534f7def0928";
+const accountSid = process.env.ACCOUNT_SID;
+const authToken = process.env.AUTH_TOKEN;
 const nodemailer = require("nodemailer");
 
 //hello
-const db =
-  "mongodb+srv://dhoberman:sunny06031999@cluster0.mcv6o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const db = process.env.MONGO_URI;
 
 const connectDB = async () => {
   try {
@@ -40,7 +40,7 @@ connectDB();
 
 app.use(
   session({
-    secret: "verygoodsecret",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -118,15 +118,15 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "net.rocket.mern@gmail.com",
-    pass: "Sunny06031999?",
+    pass: process.env.PASSWORD,
   },
 });
 
 passport.use(
   new FacebookStrategy(
     {
-      clientID: "310987207075884",
-      clientSecret: "6d0993c88fdb8b61375514cfc78a6268",
+      clientID: process.env.FACEBOOK_ID,
+      clientSecret: process.env.FACEBOOK_SECRET,
       callbackURL: "https://net-rocket.herokuapp.com/auth/facebook/callback",
       profileFields: ["id", "emails", "name"],
     },
@@ -201,9 +201,8 @@ passport.use(
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "133162901525-dn1t48orgcke7sioi415tp0jj6l7gnoj.apps.googleusercontent.com",
-      clientSecret: "FBblFe-YuQHqkuYVuwfVeMtc",
+      clientID: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: "/auth/google/callback",
     },
     function (accessToken, refreshToken, profile, cb) {
