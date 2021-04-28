@@ -13,6 +13,10 @@ const Styles = styled.div`
     border-radius: 8px;
     background-color: white;
     padding: 15px;
+
+    @media screen and (max-width: 960px) {
+      margin: 0 0 0 0;
+    }
   }
 
   .username-input,
@@ -106,22 +110,44 @@ const Styles = styled.div`
 
   ul {
     display: inline-block !important;
+
+    @media screen and (max-width: 960px) {
+      display: inline-block !important;
+      margin: 0;
+      padding: 0;
+    }
   }
   ul li {
     list-style: none;
+    @media screen and (max-width: 960px) {
+      display: inline-block !important;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   li {
     display: inline-block !important;
     margin: auto;
+    @media screen and (max-width: 960px) {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .li1 {
     margin-right: 10rem;
+    @media screen and (max-width: 960px) {
+      margin: 0;
+    }
   }
 
   .li2 {
     margin-left: 10rem;
+    @media screen and (max-width: 960px) {
+      margin: 0;
+    }
   }
   ul li a {
     display: inline-block;
@@ -135,6 +161,11 @@ const Styles = styled.div`
     color: #404040;
     margin: 0 30px;
     transition: 0.5s;
+    @media screen and (max-width: 965px) {
+      display: inline-block;
+      margin: 22px;
+      margin-top: 0px;
+    }
   }
   ul li a span {
     position: absolute;

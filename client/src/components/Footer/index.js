@@ -24,17 +24,17 @@ const Footer = () => {
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Contact Us</FooterLinkTitle>
-              <FooterLink to="/signin">Email</FooterLink>
-              <FooterLink to="/signin">Support</FooterLink>
-              <FooterLink to="/signin">Locations</FooterLink>
-              <FooterLink to="/signin">Hours</FooterLink>
+              <FooterLink to="www.gmail.com">Email</FooterLink>
+              <FooterLink to="www.google.com">Support</FooterLink>
+              <FooterLink to="https://maps.google.com">Locations</FooterLink>
+              <FooterLink to="www.google.com">Hours</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>Social Media</FooterLinkTitle>
-              <FooterLink to="/signin">Instagram</FooterLink>
-              <FooterLink to="/signin">Facebook</FooterLink>
-              <FooterLink to="/signin">Twitter</FooterLink>
-              <FooterLink to="/signin">GitHub</FooterLink>
+              <FooterLink to="www.instagram.com">Instagram</FooterLink>
+              <FooterLink to="www.facebook.com">Facebook</FooterLink>
+              <FooterLink to="www.twitter.com">Twitter</FooterLink>
+              <FooterLink to="www.github.com">GitHub</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>
@@ -46,7 +46,7 @@ const Footer = () => {
             </WebsiteRights>
             <SocialIcons>
               <SocialIconLink
-                href="/www.facebook.com"
+                href="www.facebook.com"
                 target="_blank"
                 aria-label="Facebook"
               >

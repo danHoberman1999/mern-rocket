@@ -12,6 +12,10 @@ const Styles = styled.div`
     border-radius: 8px;
     background-color: white;
     padding: 15px;
+
+    @media screen and (max-width: 960px) {
+      margin: 0 0 0 0;
+    }
   }
 
   .custom-btn {

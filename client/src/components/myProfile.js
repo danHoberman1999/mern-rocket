@@ -68,6 +68,10 @@ const Styles = styled.div`
       -webkit-text-fill-color: transparent;
       animation: textclip 100s linear infinite;
       display: inline-block;
+
+      @media screen and (max-width: 960px) {
+        font-size: 36px;
+      }
     }
   }
 
@@ -99,6 +103,10 @@ const Styles = styled.div`
     &:hover {
       transform: rotate(40deg);
     }
+
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
   }
 
   .button-2 {
@@ -120,6 +128,10 @@ const Styles = styled.div`
     &:hover {
       transform: rotate(40deg);
     }
+
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
   }
 
   .button-3 {
@@ -139,6 +151,10 @@ const Styles = styled.div`
     &:hover {
       transform: rotate(40deg);
     }
+
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
   }
 
   .button-4 {
@@ -149,6 +165,10 @@ const Styles = styled.div`
     cursor: pointer;
     background-color: white;
     color: red;
+
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
   }
 
   .bottom-group {
@@ -192,6 +212,10 @@ const Styles = styled.div`
     margin-left: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     color: black;
+
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
   }
 `;
 

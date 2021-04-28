@@ -2,11 +2,11 @@ import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import axios from "axios";
+import { FaBars } from "react-icons/fa";
 
 const Styles = styled.div`
   .navbar {
     background: #000;
-    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +30,20 @@ const Styles = styled.div`
     max-width: 1100px;
   }
 
+  .navbar-hamburger {
+    color: purple !important;
+  }
+
+  .navbar-toggler {
+    background: linear-gradient(to left, #ab68ca, #de67a3) #de67a3;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #de67a3;
+    }
+  }
+
   .navbar-nav .nav-link {
     color: #fff;
     display: flex;
@@ -45,7 +59,8 @@ const Styles = styled.div`
     }
 
     &:hover {
-      color: #de67a3;
+      opacity: 0.8;
+      color: #fff;
     }
   }
 
@@ -60,7 +75,8 @@ const Styles = styled.div`
     font-weight: bold;
     text-decoration: none !important;
     &:hover {
-      color: #de67a3;
+      opacity: 0.8;
+      color: #fff;
     }
   }
 
@@ -89,7 +105,27 @@ const Styles = styled.div`
     &:hover {
       transition: all 0.2s ease-in-out;
       background: #fff;
-      color: #010606;
+      color: #000 !important;
+    }
+
+    @media screen and (max-width: 1010px) {
+      transition: all 0.2s ease-in-out;
+      background: black !important;
+      color: #de67a3;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .log-in-special {
+    color: #000 !important;
+    text-decoration: none !important;
+    @media screen and (max-width: 1010px) {
+      transition: all 0.2s ease-in-out;
+      color: #de67a3 !important;
+      font-weight: bold;
+      text-decoration: none !important;
+      font-size: 130%;
     }
   }
 
@@ -109,7 +145,14 @@ const Styles = styled.div`
     &:hover {
       transition: all 0.2s ease-in-out;
       background: #fff;
-      color: #010606;
+      color: #000;
+    }
+
+    @media screen and (max-width: 1010px) {
+      transition: all 0.2s ease-in-out;
+      background: black !important;
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -144,7 +187,7 @@ function NavigationBar(props) {
       {loggedIn ? (
         <Navbar expand="lg">
           <Navbar.Brand href="#home">Mern-Template</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Item className="fonts">
@@ -168,7 +211,7 @@ function NavigationBar(props) {
             </Nav>
             <Nav className="ml-auto">
               <Nav.Item className="log-out">
-                <Nav.Link href="/" onClick={logOut}>
+                <Nav.Link className="log-in-special" href="/" onClick={logOut}>
                   Sign out
                 </Nav.Link>
               </Nav.Item>
@@ -197,7 +240,9 @@ function NavigationBar(props) {
                 <Nav.Link href="/sign-up">Sign-Up</Nav.Link>
               </Nav.Item>
               <Nav.Item className="log-in">
-                <Nav.Link href="/log-in">Log-In</Nav.Link>
+                <Nav.Link className="log-in-special" href="/log-in">
+                  Log-In
+                </Nav.Link>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>
