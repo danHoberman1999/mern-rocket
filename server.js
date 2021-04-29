@@ -277,7 +277,6 @@ app.post("/upload", type, (req, res) => {
   if (req.file.path === null) {
     return res.status(400).json({ msg: "No file was uploaded" });
   }
-
   const photo = req.file.originalname;
 
   console.log("upload process started");
