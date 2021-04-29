@@ -79,15 +79,15 @@ function User(props) {
     },
   ]);
 
-  // useEffect(() => {
-  //   fetch(address)
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //     })
-  //     .then((jsonRes) => setUsers(jsonRes));
-  // });
+  useEffect(() => {
+    fetch(address)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((jsonRes) => setUsers(jsonRes));
+  });
 
   return (
     <Styles>

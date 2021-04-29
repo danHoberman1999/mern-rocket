@@ -276,43 +276,43 @@ function MyProfile(props) {
     setEdit(true);
   }
 
-  // useEffect(() => {
-  //   fetch("/userInfo")
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //     })
-  //     .then((jsonRes) => setUser(jsonRes));
-  // });
+  useEffect(() => {
+    fetch("/userInfo")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((jsonRes) => setUser(jsonRes));
+  });
 
-  // useEffect(() => {
-  //   fetch("/completed")
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //     })
-  //     .then((response) => setCompleted(response[0].completed));
-  // });
+  useEffect(() => {
+    fetch("/completed")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((response) => setCompleted(response[0].completed));
+  });
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/userPhoto")
-  //     .then((response) => [setImage(response.data[0].photo)])
+  useEffect(() => {
+    axios
+      .get("/userPhoto")
+      .then((response) => [setImage(response.data[0].photo)])
 
-  //     .catch((error) => console.log(error));
-  // }, []);
+      .catch((error) => console.log(error));
+  }, []);
 
-  // useEffect(() => {
-  //   fetch("/userPhoto")
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //     })
-  //     .then((response) => [setImage(response.data[0].photo)]);
-  // });
+  useEffect(() => {
+    fetch("/userPhoto")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((response) => [setImage(response.data[0].photo)]);
+  });
 
   function deleteAccount() {
     console.log("starting deletion process");
