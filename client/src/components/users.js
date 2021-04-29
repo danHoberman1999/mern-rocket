@@ -11,6 +11,10 @@ const Styles = styled.div`
     color: #f5f5f7;
   }
 
+  .div {
+    overflow: hidden !important;
+  }
+
   Form {
     color: #f5f5f7;
   }
@@ -92,42 +96,44 @@ function User(props) {
   return (
     <Styles>
       <React.Fragment>
-        <NavigationBar loggedIn={props.loggedIn} />
-        <Container>
-          <h1 className="title">Users:</h1>
-          <Form>
-            <Row>
-              <Col>
-                <Form.Check
-                  defaultChecked={true}
-                  type="switch"
-                  id="sort-switch"
-                  name="sort-switch"
-                  onChange={handleSort}
-                  label="Check switch for lastname sort"
-                />
-              </Col>
-              <Col>
-                <Form.Check
-                  defaultChecked={true}
-                  type="switch"
-                  id="view-switch"
-                  name="view-switch"
-                  onChange={handleView}
-                  label="Check switch for List display"
-                />
-              </Col>
-            </Row>
-          </Form>
-        </Container>
-
-        {view ? (
-          <Container fluid="md">{users.map(createEntry)}</Container>
-        ) : (
-          <Container fluid="md">
-            <Row>{users.map(createEntry)}</Row>
+        <div className="div">
+          <NavigationBar loggedIn={props.loggedIn} />
+          <Container>
+            <h1 className="title">Users:</h1>
+            <Form>
+              <Row>
+                <Col>
+                  <Form.Check
+                    defaultChecked={true}
+                    type="switch"
+                    id="sort-switch"
+                    name="sort-switch"
+                    onChange={handleSort}
+                    label="Check switch for lastname sort"
+                  />
+                </Col>
+                <Col>
+                  <Form.Check
+                    defaultChecked={true}
+                    type="switch"
+                    id="view-switch"
+                    name="view-switch"
+                    onChange={handleView}
+                    label="Check switch for List display"
+                  />
+                </Col>
+              </Row>
+            </Form>
           </Container>
-        )}
+
+          {view ? (
+            <Container fluid="md">{users.map(createEntry)}</Container>
+          ) : (
+            <Container fluid="md">
+              <Row>{users.map(createEntry)}</Row>
+            </Container>
+          )}
+        </div>
       </React.Fragment>
     </Styles>
   );
