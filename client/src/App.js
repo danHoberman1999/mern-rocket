@@ -41,7 +41,7 @@ function App() {
     });
   }
 
-  getUser();
+  //getUser();
 
   return (
     <React.Fragment>
