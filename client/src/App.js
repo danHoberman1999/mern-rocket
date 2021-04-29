@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/home";
 import Users from "./components/users";
@@ -20,31 +20,29 @@ function App() {
     username: null,
   });
 
-  useEffect(() => {
-    fetch("/info")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((response) => {
-        if (response.data.user) {
-          console.log(
-            "Get User: There is a user saved in the server session: "
-          );
+  function getUser() {
+    axios.get("/info").then((response) => {
+      console.log("Get user response: ");
+      console.log(response.data);
+      if (response.data.user) {
+        console.log("Get User: There is a user saved in the server session: ");
 
-          setUser({
-            loggedIn: true,
-            username: response.data.user.username,
-          });
-        } else {
-          console.log("Get user: no user");
-          setUser({
-            loggedIn: false,
-            username: null,
-          });
-        }
-      });
+        setUser({
+          loggedIn: true,
+          username: response.data.user.username,
+        });
+      } else {
+        console.log("Get user: no user");
+        setUser({
+          loggedIn: false,
+          username: null,
+        });
+      }
+    });
+  }
+
+  useEffect(() => {
+    getUser();
   });
 
   return (
