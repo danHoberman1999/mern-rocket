@@ -20,28 +20,32 @@ function App() {
     username: null,
   });
 
-  function getUser() {
-    axios.get("/info").then((response) => {
-      console.log("Get user response: ");
-      console.log(response.data);
-      if (response.data.user) {
-        console.log("Get User: There is a user saved in the server session: ");
+  useEffect(() => {
+    fetch("/info")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((response) => {
+        if (response.data.user) {
+          console.log(
+            "Get User: There is a user saved in the server session: "
+          );
 
-        setUser({
-          loggedIn: true,
-          username: response.data.user.username,
-        });
-      } else {
-        console.log("Get user: no user");
-        setUser({
-          loggedIn: false,
-          username: null,
-        });
-      }
-    });
-  }
-
-  //getUser();
+          setUser({
+            loggedIn: true,
+            username: response.data.user.username,
+          });
+        } else {
+          console.log("Get user: no user");
+          setUser({
+            loggedIn: false,
+            username: null,
+          });
+        }
+      });
+  });
 
   return (
     <React.Fragment>
