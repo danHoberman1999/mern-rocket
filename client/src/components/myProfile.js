@@ -21,28 +21,22 @@ const Styles = styled.div`
     margin: auto;
     display: block;
   }
-
   $avatar-size: 32px;
   $body-background: #353535;
-
   @font-face {
     font-family: "ubuntu";
     font-style: italic;
     font-weight: 300;
-
     src: local("Lato Light Italic"), local("Lato-LightItalic"),
       url(https://fonts.gstatic.com/s/ubuntucondensed/v8/u-4k0rCzjgs5J7oXnJcM_0kACGMtT-Dfqw.woff2)
         format("woff2");
   }
-
   h1 {
     overflow: hidden;
   }
-
   .wrapper {
     overflow: hidden;
   }
-
   .wrapper {
     text-align: center;
     h1 {
@@ -51,7 +45,6 @@ const Styles = styled.div`
       font-family: "ubuntu";
       text-transform: uppercase;
       font-weight: 700;
-
       font-family: "Josefin Sans", sans-serif;
       background: linear-gradient(
         to right,
@@ -68,25 +61,21 @@ const Styles = styled.div`
       -webkit-text-fill-color: transparent;
       animation: textclip 100s linear infinite;
       display: inline-block;
-
       @media screen and (max-width: 960px) {
         font-size: 36px;
       }
     }
   }
-
   @keyframes textclip {
     to {
       background-position: 200% center;
     }
   }
-
   .container {
     background-color: white;
     margin-top: 50px;
     border-radius: 15px 15px 15px 15px;
   }
-
   .button {
     border-radius: 50%;
     border: none;
@@ -103,12 +92,10 @@ const Styles = styled.div`
     &:hover {
       transform: rotate(40deg);
     }
-
     @media screen and (max-width: 960px) {
       display: none;
     }
   }
-
   .button-2 {
     border-radius: 50%;
     border: none;
@@ -128,12 +115,10 @@ const Styles = styled.div`
     &:hover {
       transform: rotate(40deg);
     }
-
     @media screen and (max-width: 960px) {
       display: none;
     }
   }
-
   .button-3 {
     border-radius: 50%;
     border: 2px solid black;
@@ -151,12 +136,10 @@ const Styles = styled.div`
     &:hover {
       transform: rotate(40deg);
     }
-
     @media screen and (max-width: 960px) {
       display: none;
     }
   }
-
   .button-4 {
     border-radius: 10px;
     border: 4px solid red;
@@ -165,54 +148,44 @@ const Styles = styled.div`
     cursor: pointer;
     background-color: white;
     color: red;
-
     @media screen and (max-width: 960px) {
       display: none;
     }
   }
-
   .bottom-group {
     margin-bottom: 60px;
   }
-
   .form {
     padding: 5px;
   }
-
   .form-row-1 {
     padding: 2px;
   }
-
   .form-control {
     background-color: #f5f5f5;
     border-radius: 15px;
     font-weight: 700;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   }
-
   .form-label {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
   }
-
   .emblem {
     width: 40px;
     height: 40px;
     margin: auto;
     display: inline;
   }
-
   .edit-info {
     margin-right: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     color: #ff7f50;
   }
-
   .edit-control {
     margin-left: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     color: black;
-
     @media screen and (max-width: 960px) {
       display: none;
     }
@@ -303,6 +276,16 @@ function MyProfile(props) {
 
       .catch((error) => console.log(error));
   }, []);
+
+  useEffect(() => {
+    fetch("/userPhoto")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((response) => [setImage(response.data[0].photo)]);
+  });
 
   function deleteAccount() {
     console.log("starting deletion process");
