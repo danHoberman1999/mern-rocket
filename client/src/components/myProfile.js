@@ -297,11 +297,13 @@ function MyProfile(props) {
   });
 
   useEffect(() => {
-    axios
-      .get("/userPhoto")
-      .then((response) => [setImage(response.data[0].photo)])
-
-      .catch((error) => console.log(error));
+    fetch("/userPhoto")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((response) => [setImage(response.data[0].photo)]);
   }, []);
 
   useEffect(() => {
