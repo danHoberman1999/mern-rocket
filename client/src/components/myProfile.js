@@ -304,7 +304,7 @@ function MyProfile(props) {
         }
       })
       .then((response) => [setImage(response.data[0].photo)]);
-  });
+  }, []);
 
   useEffect(() => {
     fetch("/userPhoto")
