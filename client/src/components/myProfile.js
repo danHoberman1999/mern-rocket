@@ -11,6 +11,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import rocket from "../../public/uploads/ping.png";
 
 const Styles = styled.div`
   .circle-img {
@@ -378,7 +379,7 @@ function MyProfile(props) {
                     alt="..."
                   />
                 ) : (
-                  <img className="circle-img" src={userProfile} alt="icons8" />
+                  <img className="circle-img" src={rocket} alt="icons8" />
                 )}
 
                 {completed ? (
