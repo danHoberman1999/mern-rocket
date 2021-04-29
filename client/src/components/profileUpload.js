@@ -87,7 +87,7 @@ function ProfileUpload(props) {
             <div className="custom-file mb-4">
               <input
                 type="file"
-                accept=".png, .jpg, .jpeg"
+                accept=".png"
                 name="photo"
                 className="custom-file-input"
                 id="customFile"

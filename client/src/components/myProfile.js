@@ -297,24 +297,12 @@ function MyProfile(props) {
   });
 
   useEffect(() => {
-    fetch("/userPhoto")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((response) => [setImage(response.data[0].photo)]);
-  }, []);
+    axios
+      .get("/userPhoto")
+      .then((response) => [setImage(response.data[0].photo)])
 
-  useEffect(() => {
-    fetch("/userPhoto")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((response) => [setImage(response.data[0].photo)]);
-  });
+      .catch((error) => console.log(error));
+  }, []);
 
   function deleteAccount() {
     console.log("starting deletion process");
