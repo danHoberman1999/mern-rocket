@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavigationBar from "./navigationBar";
 import { Container, Col, Form } from "react-bootstrap";
 import Layout from "./layout";
-import userProfile from "../../uploads/user.gif";
+import userProfile from "../assets/user.gif";
 import emblem from "../assets/fire.gif";
 import camera from "../assets/camera.png";
 import editImage from "../assets/editImage.png";
