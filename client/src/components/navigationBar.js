@@ -186,7 +186,7 @@ function NavigationBar(props) {
     <Styles>
       {loggedIn ? (
         <Navbar expand="lg">
-          <Navbar.Brand href="#home">Mern-Template</Navbar.Brand>
+          <Navbar.Brand href="/home">Mern-Template</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
