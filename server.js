@@ -54,7 +54,7 @@ app.use(passport.session());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "client/public/uploads/");
+    cb(null, "./client/public/uploads");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
