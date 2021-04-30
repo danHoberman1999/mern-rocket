@@ -61,7 +61,7 @@ function ProfileUpload(props) {
 
           // Clear percentage
           setTimeout(() => setUploadPercentage(0), 10000);
-          setTimeout(() => setRedirectTo("/"), 2000);
+          setTimeout(() => setRedirectTo("/my-profile"), 2000);
         },
       });
     } catch (err) {
