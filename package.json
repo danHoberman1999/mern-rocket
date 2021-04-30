@@ -13,6 +13,7 @@
   "author": "Daniel Hoberman",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.896.0",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
@@ -25,6 +26,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.12.3",
     "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",

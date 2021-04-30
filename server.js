@@ -5,6 +5,8 @@ const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const app = express();
+const aws = require("aws-sdk");
+multerS3 = require("multer-s3");
 const User = require("./models/User");
 const Info = require("./models/Info");
 let path = require("path");
@@ -53,33 +55,36 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, "profile" + "-" + Date.now() + "-" + file.originalname);
-  },
-});
+// Multer Setup
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "client/public/uploads");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, "profile" + "-" + Date.now() + "-" + file.originalname);
+//   },
+// });
 
-const upload = multer({
-  storage,
-  limits: {
-    fileSize: 1024 * 1024 * 1024 * 5, // it can accept upto 5MB image
-  },
-  fileFilter: (req, file, cb) => {
-    // filter out accepted file types
-    const types = /png/;
-    const extName = types.test(path.extname(file.originalname).toLowerCase());
-    const mimeType = types.test(file.mimetype);
+// const upload = multer({
+//   storage,
+//   limits: {
+//     fileSize: 1024 * 1024 * 1024 * 5, // it can accept upto 5MB image
+//   },
+//   fileFilter: (req, file, cb) => {
+//     // filter out accepted file types
+//     const types = /png/;
+//     const extName = types.test(path.extname(file.originalname).toLowerCase());
+//     const mimeType = types.test(file.mimetype);
 
-    if (extName && mimeType) {
-      cb(null, true);
-    } else {
-      cb(new Error("Only Support Images"));
-    }
-  },
-});
+//     if (extName && mimeType) {
+//       cb(null, true);
+//     } else {
+//       cb(new Error("Only Support Images"));
+//     }
+//   },
+// });
+
+// Passport setup
 
 passport.serializeUser(function (user, done) {
   console.log("*** serializeUser called, user: ");
@@ -119,6 +124,7 @@ passport.use(
   })
 );
 
+// Twilio Setup
 const sendSms = (phone, message) => {
   const client = require("twilio")(accountSid, authToken);
   client.messages
@@ -138,6 +144,37 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Setting up amazon s3
+aws.config.update({
+  signatureVersion: "v4",
+  secretAccessKey: process.env.AMAZON_SECRET,
+  accessKeyId: process.env.AMAZON_ACCESS,
+  region: "us-west-2",
+});
+
+s3 = new aws.S3();
+
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "mern-app-5000",
+    key: function (req, file, cb) {
+      console.log(file);
+      cb(null, "profile" + "-" + Date.now() + "-" + file.originalname); //use Date.now() for unique file keys
+    },
+  }),
+});
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "client/public/uploads");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, "profile" + "-" + Date.now() + "-" + file.originalname);
+//   },
+// });
+
+// Facebook Strategy
 passport.use(
   new FacebookStrategy(
     {
@@ -288,15 +325,21 @@ passport.use(
   )
 );
 
-var type = upload.single("file");
+//var type = upload.single("file");
 
-app.post("/upload", type, (req, res) => {
+// app.post("/upload", upload.array("upl", 1), function (req, res, next) {
+//   res.send("Uploaded!");
+// });
+
+app.post("/upload", upload.single("file"), (req, res) => {
   //convert this to set instead of new
   if (req.file.path === null) {
     return res.status(400).json({ msg: "No file was uploaded" });
   }
 
-  const photo = req.file.filename;
+  const photo = req.file.key;
+
+  console.log(req.file);
 
   console.log("upload process started");
 

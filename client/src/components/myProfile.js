@@ -347,7 +347,7 @@ function MyProfile(props) {
                 {completed ? (
                   <img
                     className="circle-img"
-                    src={`/uploads/${image}`}
+                    src={`https://mern-app-5000.s3-us-west-2.amazonaws.com/${image}`}
                     alt="profile"
                   />
                 ) : (

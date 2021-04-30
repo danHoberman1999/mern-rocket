@@ -224,8 +224,8 @@ function UserInfo(props) {
               {completed ? (
                 <img
                   className="circle-img"
-                  src={`/uploads/${image}`}
-                  alt="..."
+                  src={`https://mern-app-5000.s3-us-west-2.amazonaws.com/${image}`}
+                  alt="profile"
                 />
               ) : (
                 <img className="circle-img" src={userProfile} alt="icons8" />
