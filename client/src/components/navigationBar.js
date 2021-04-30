@@ -187,7 +187,7 @@ function NavigationBar(props) {
       {loggedIn ? (
         <Navbar expand="lg">
           <Navbar.Brand href="http://net-rocket.herokuapp.com/">
-            Mern-Rocket
+            Mern Rocket
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
