@@ -361,7 +361,7 @@ function LogIn(props) {
           </Form.Group>
           <Recaptcha
             className="google-recaptcha"
-            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+            sitekey="6LcUIcAaAAAAAI0kDy93vs8W-73JJ95nMj_E9CjT"
             render="explicit"
             verifyCallback={verifyCallback}
             onloadCallback={callback}
