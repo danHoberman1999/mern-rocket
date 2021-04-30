@@ -11,7 +11,6 @@ const User = require("./models/User");
 const Info = require("./models/Info");
 let path = require("path");
 const multer = require("multer");
-var fs = require("file-system");
 require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
