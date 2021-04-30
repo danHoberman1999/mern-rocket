@@ -277,16 +277,6 @@ function MyProfile(props) {
       .catch((error) => console.log(error));
   }, []);
 
-  useEffect(() => {
-    fetch("/userPhoto")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((response) => [setImage(response.data[0].photo)]);
-  });
-
   function deleteAccount() {
     console.log("starting deletion process");
     axios
@@ -357,7 +347,7 @@ function MyProfile(props) {
                 {completed ? (
                   <img
                     className="circle-img"
-                    src={require(`/uploads/${image}`)}
+                    src={`/uploads/${image}`}
                     alt="profile"
                   />
                 ) : (

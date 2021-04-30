@@ -424,7 +424,7 @@ function SignUp(props) {
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="3" controlId="validationCustom03">
-              <Form.Label>City</Form.Label>
+              <Form.Label>City*</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="City"
@@ -454,7 +454,7 @@ function SignUp(props) {
                 <option>California</option>
                 <option>Colorado</option>
                 <option>Conneticut</option>
-                <option>Deleware</option>
+                <option>Delaware</option>
                 <option>Florida</option>
                 <option>Georgia</option>
               </Form.Control>
