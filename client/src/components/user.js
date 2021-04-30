@@ -58,6 +58,9 @@ const Styles = styled.div`
       -webkit-text-fill-color: transparent;
       animation: textclip 100s linear infinite;
       display: inline-block;
+      @media screen and (max-width: 960px) {
+        font-size: 36px;
+      }
     }
   }
 

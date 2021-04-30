@@ -35,27 +35,25 @@ const Styles = styled.div`
 
 function User(props) {
   const [view, setView] = useState(true);
+  const [address, setAddress] = useState("/firstForward");
+  const [sort, setSort] = useState(false);
 
   function handleView() {
     setView(!view);
   }
 
-  const [sort, setSort] = useState(false);
-
   function handleSort() {
     setSort(!sort);
 
-    if (sort === true) {
+    if (sort == true) {
       setAddress("/firstForward");
       console.log("First forward");
     }
-    if (sort === false) {
+    if (sort == false) {
       setAddress("/lastForward");
       console.log("Last forward");
     }
   }
-
-  const [address, setAddress] = useState("/firstForward");
 
   function createEntry(userData) {
     return (
@@ -130,7 +128,9 @@ function User(props) {
             <Container fluid="md">{users.map(createEntry)}</Container>
           ) : (
             <Container fluid="md">
-              <Row>{users.map(createEntry)}</Row>
+              <Row lg="3" md="2" sm="1" xs="1">
+                {users.map(createEntry)}
+              </Row>
             </Container>
           )}
         </div>

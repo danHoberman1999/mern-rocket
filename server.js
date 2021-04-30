@@ -161,6 +161,18 @@ var upload = multer({
       console.log(file);
       cb(null, "profile" + "-" + Date.now() + "-" + file.originalname); //use Date.now() for unique file keys
     },
+    fileFilter: (req, file, cb) => {
+      // filter out accepted file types
+      const types = /jpeg|jpg|png|gif/;
+      const extName = types.test(path.extname(file.originalname).toLowerCase());
+      const mimeType = types.test(file.mimetype);
+
+      if (extName && mimeType) {
+        cb(null, true);
+      } else {
+        cb(new Error("Only Support Images"));
+      }
+    },
   }),
 });
 

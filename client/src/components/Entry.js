@@ -31,6 +31,7 @@ const Styles = styled.div`
     display: block;
     padding-left: 20px;
     padding: 3px;
+    overflow: hidden;
   }
 
   .button {
