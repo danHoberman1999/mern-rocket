@@ -186,7 +186,9 @@ function NavigationBar(props) {
     <Styles>
       {loggedIn ? (
         <Navbar expand="lg">
-          <Navbar.Brand href="/">Mern-Template</Navbar.Brand>
+          <Navbar.Brand href="http://net-rocket.herokuapp.com/">
+            Mern-Rocket
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
