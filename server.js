@@ -9,6 +9,7 @@ const User = require("./models/User");
 const Info = require("./models/Info");
 let path = require("path");
 const multer = require("multer");
+var fs = require("file-system");
 require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
@@ -54,16 +55,31 @@ app.use(passport.session());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, __dirname + "./client/public/uploads/");
+    cb(null, "./client/public/uploads");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, "profile" + "-" + Date.now() + "-" + file.originalname);
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 1024 * 1024 * 1024 * 5, // it can accept upto 5MB image
+  },
+  fileFilter: (req, file, cb) => {
+    // filter out accepted file types
+    const types = /png/;
+    const extName = types.test(path.extname(file.originalname).toLowerCase());
+    const mimeType = types.test(file.mimetype);
 
-var type = upload.single("file");
+    if (extName && mimeType) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only Support Images"));
+    }
+  },
+});
 
 passport.serializeUser(function (user, done) {
   console.log("*** serializeUser called, user: ");
@@ -272,12 +288,15 @@ passport.use(
   )
 );
 
+var type = upload.single("file");
+
 app.post("/upload", type, (req, res) => {
   //convert this to set instead of new
   if (req.file.path === null) {
     return res.status(400).json({ msg: "No file was uploaded" });
   }
-  const photo = req.file.originalname;
+
+  const photo = req.file.filename;
 
   console.log("upload process started");
 
