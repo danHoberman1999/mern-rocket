@@ -128,7 +128,7 @@ function User(props) {
             <Container fluid="md">{users.map(createEntry)}</Container>
           ) : (
             <Container fluid="md">
-              <Row xl="5" lg="3" md="2" sm="1" xs="1">
+              <Row lg="3" md="2" sm="1" xs="1">
                 {users.map(createEntry)}
               </Row>
             </Container>
