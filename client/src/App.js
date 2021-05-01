@@ -12,6 +12,7 @@ import Payment from "./components/payment";
 import User from "./components/user";
 import Engine from "./components/engineChat";
 import Simple from "./components/simpleChat";
+import Stripe from "./components/stripePayment";
 import axios from "axios";
 
 function App() {
@@ -63,6 +64,10 @@ function App() {
           <Route
             path="/users"
             render={() => <Users loggedIn={user.loggedIn} />}
+          />
+          <Route
+            path="/stripe"
+            render={() => <Stripe loggedIn={user.loggedIn} />}
           />
           <Route
             path="/engine-chat"
