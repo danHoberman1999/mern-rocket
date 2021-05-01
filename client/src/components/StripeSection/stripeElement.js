@@ -50,9 +50,9 @@ export const StripeButton = styled.button`
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   white-space: nowrap;
   padding: 14px 48px;
-  color: #000;
-  font-weight: 700;
-  font-size: 20px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
   outline: none;
   border: none;
   cursor: pointer;
@@ -132,8 +132,9 @@ export const InfoRow = styled.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
   align-items: center;
-  grid-template-areas:'col1 col2';
+  grid-template-areas: "col1 col2";
 
   @media screen and (max-width: 768px) {
-    grid-template-areas: 'col1' 'col2';
+    grid-template-areas: "col1" "col2";
+  }
 `;

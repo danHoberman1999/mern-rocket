@@ -48,6 +48,9 @@ const Styles = styled.div`
     display: flex;
     align-items: center;
     text-decoration: none;
+    font-size: 1.3rem;
+    margin-left: 35px;
+    margin-right: 35px;
     padding: 0 1rem;
     height: 100%;
     cursor: pointer;
@@ -61,19 +64,23 @@ const Styles = styled.div`
       opacity: 0.8;
       color: #fff;
     }
+
+    @media screen and (max-width: 1060px) {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
   }
 
   .navbar-brand {
-    background: #12C2E9;
-background: -webkit-linear-gradient(to right, #12C2E9 0%, #c471ed 50%, #F64F59 100%);
-background: -moz-linear-gradient(to right, #12C2E9 0%, #c471ed 50%, #F64F59 100%);
-background: linear-gradient(to right, #12C2E9 0%, #c471ed 50%, #F64F59 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #de66a3;
+    background: -webkit-linear-gradient(to right, #de66a3 12%, #eeeeee 100%);
+    background: -moz-linear-gradient(to right, #de66a3 12%, #eeeeee 100%);
+    background: linear-gradient(to right, #de66a3 12%, #eeeeee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     justify-self: flex-start;
     cursor: pointer;
-    font-size: 1.7rem;
+    font-size: 2.5rem;
     display: flex;
     align-items: center;
     margin-left: 24px;
@@ -195,23 +202,20 @@ function NavigationBar(props) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="mr-auto"></Nav>
+          <Nav className="ml-auto">
             <Nav.Item className="fonts">
               <Nav.Link href="/">Home</Nav.Link>
             </Nav.Item>
             <Nav.Item className="fonts">
               <Nav.Link href="/my-profile">My Profile</Nav.Link>
             </Nav.Item>
+            <Nav.Item className="fonts">
+              <Nav.Link href="/engine-chat">Engine Chat</Nav.Link>
+            </Nav.Item>
 
             <Nav.Item className="fonts">
-              <Nav.Link href="/stripe">Stripe</Nav.Link>
-            </Nav.Item>
-          </Nav>
-          <Nav className="ml-auto">
-            <Nav.Item className="log-out">
-              <Nav.Link className="log-in-special" href="https://stripe.com/">
-                View Stripe.com
-              </Nav.Link>
+              <Nav.Link href="/payment">Donation</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
