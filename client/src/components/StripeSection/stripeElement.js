@@ -35,10 +35,23 @@ export const StripeContainer = styled.div`
 
 export const StripeButton = styled.button`
   border-radius: 3px;
-  background: #e36f2c;
+  background: #12c2e9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   white-space: nowrap;
   padding: 14px 48px;
-  color: #fff;
+  color: #000;
+  font-weight: 700;
   font-size: 20px;
   outline: none;
   border: none;

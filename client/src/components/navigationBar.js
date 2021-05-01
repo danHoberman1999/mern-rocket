@@ -65,10 +65,30 @@ const Styles = styled.div`
   }
 
   .navbar-brand {
-    color: #fff;
+    background: #ab68ca;
+    background: -webkit-linear-gradient(
+      to right,
+      #ab68ca 0%,
+      #de67a3 78%,
+      #ffffff 100%
+    );
+    background: -moz-linear-gradient(
+      to right,
+      #ab68ca 0%,
+      #de67a3 78%,
+      #ffffff 100%
+    );
+    background: linear-gradient(
+      to right,
+      #ab68ca 0%,
+      #de67a3 78%,
+      #ffffff 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     justify-self: flex-start;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     display: flex;
     align-items: center;
     margin-left: 24px;
@@ -186,7 +206,7 @@ function NavigationBar(props) {
     <Styles>
       {loggedIn ? (
         <Navbar expand="lg">
-          <Navbar.Brand href="http://net-rocket.herokuapp.com/">
+          <Navbar.Brand href="http://net-rocket.herokuapp.com">
             Mern Rocket
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
@@ -225,7 +245,9 @@ function NavigationBar(props) {
         </Navbar>
       ) : (
         <Navbar expand="lg">
-          <Navbar.Brand href="#home">Net Rocket</Navbar.Brand>
+          <Navbar.Brand href="http://net-rocket.herokuapp.com">
+            Net Rocket
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

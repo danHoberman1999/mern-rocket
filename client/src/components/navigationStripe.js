@@ -64,10 +64,16 @@ const Styles = styled.div`
   }
 
   .navbar-brand {
-    color: #fff;
+    background: #12C2E9;
+background: -webkit-linear-gradient(to right, #12C2E9 0%, #c471ed 50%, #F64F59 100%);
+background: -moz-linear-gradient(to right, #12C2E9 0%, #c471ed 50%, #F64F59 100%);
+background: linear-gradient(to right, #12C2E9 0%, #c471ed 50%, #F64F59 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     justify-self: flex-start;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     display: flex;
     align-items: center;
     margin-left: 24px;
@@ -183,75 +189,33 @@ function NavigationBar(props) {
 
   return (
     <Styles>
-      {loggedIn ? (
-        <Navbar expand="lg">
-          <Navbar.Brand href="http://net-rocket.herokuapp.com/">
-            Mern Rocket
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Item className="fonts">
-                <Nav.Link href="/">Home</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/my-profile">My Profile</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/users">Users</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/payment">Donation</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/engine-chat">Engine Chat</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/simple-chat">Simple Chat</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/stripe">Stripe</Nav.Link>
-              </Nav.Item>
-            </Nav>
-            <Nav className="ml-auto">
-              <Nav.Item className="log-out">
-                <Nav.Link className="log-in-special" href="/" onClick={logOut}>
-                  Sign out
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      ) : (
-        <Navbar expand="lg">
-          <Navbar.Brand href="#home">Net Rocket</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Item className="fonts">
-                <Nav.Link href="/">Home</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/privacy-policy">Privacy Policy</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/users">Users</Nav.Link>
-              </Nav.Item>
-            </Nav>
+      <Navbar expand="lg">
+        <Navbar.Brand href="http://net-rocket.herokuapp.com/">
+          Mern Rocket
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Item className="fonts">
+              <Nav.Link href="/">Home</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="fonts">
+              <Nav.Link href="/my-profile">My Profile</Nav.Link>
+            </Nav.Item>
 
-            <Nav className="ml-auto">
-              <Nav.Item className="sign-up">
-                <Nav.Link href="/sign-up">Sign-Up</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="log-in">
-                <Nav.Link className="log-in-special" href="/log-in">
-                  Log-In
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      )}
+            <Nav.Item className="fonts">
+              <Nav.Link href="/stripe">Stripe</Nav.Link>
+            </Nav.Item>
+          </Nav>
+          <Nav className="ml-auto">
+            <Nav.Item className="log-out">
+              <Nav.Link className="log-in-special" href="https://stripe.com/">
+                View Stripe.com
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     </Styles>
   );
 }
