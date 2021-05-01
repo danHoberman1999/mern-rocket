@@ -66,7 +66,7 @@ function App() {
             render={() => <Users loggedIn={user.loggedIn} />}
           />
           <Route
-            path="/stripe"
+            path="/checkout"
             render={() => <Stripe loggedIn={user.loggedIn} />}
           />
           <Route

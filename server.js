@@ -145,9 +145,36 @@ const transporter = nodemailer.createTransport({
 
 // Stripe Setup
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 
 const stripe = require("stripe")(stripeSecretKey);
+
+const YOUR_DOMAIN = "http://net-rocket.herokuapp.com/checkout";
+
+app.post("/create-checkout-session", async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "Stubborn Attachments",
+            images: [
+              "https://mern-app-5000.s3-us-west-2.amazonaws.com/rocketship.png",
+            ],
+          },
+          unit_amount: 205000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    success_url: `${YOUR_DOMAIN}?success=true`,
+    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+  });
+
+  res.json({ id: session.id });
+});
 
 // Setting up amazon s3
 aws.config.update({

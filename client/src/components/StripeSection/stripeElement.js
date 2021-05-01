@@ -69,7 +69,7 @@ export const StripeButton = styled.button`
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 8px;
+    font-size: 18px;
   }
 `;
 

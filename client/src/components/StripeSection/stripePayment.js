@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
-import axios from "axios";
+import Stripe from "./App";
 import { toast } from "react-toastify";
 import Img4 from "../../images/svg-4.svg";
 import NavigationStripe from "../navigationStripe";
@@ -26,12 +26,6 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 const StripePayment = (props) => {
-  const [product, setProduct] = useState({
-    name: "Rocket",
-    price: 500.33,
-    description: "Beautiful Rocket",
-  });
-
   async function handleToken(token, addresses) {
     // const response = await axios.post(
     //   "https://ry7v05l6on.sse.codesandbox.io/checkout",
@@ -60,18 +54,7 @@ const StripePayment = (props) => {
                   The world’s most powerful and easy-to-use APIs. Set up for
                   easy payment on Net-Rocket
                 </Subtitle>
-                <BtnWrap>
-                  <StripeCheckout
-                    stripeKey="pk_test_51ImDHzGahigLtd2ypOeUr8ckMe18kw3T3y8gipqG6A3GZFxk2ZvR220rXm6z9TPvPHC5ueTP9gc5HOdgFVcqtJFF00UJloyLFl"
-                    token={handleToken}
-                    amount={product.price * 100}
-                    name="Rocket"
-                    billingAddress
-                    shippingAddress
-                  >
-                    <StripeButton>Pay With Stripe</StripeButton>
-                  </StripeCheckout>
-                </BtnWrap>
+                <Stripe />
               </TextWrapper>
             </Column1>
             <Column2>

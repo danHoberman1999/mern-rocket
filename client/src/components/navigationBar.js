@@ -211,7 +211,7 @@ function NavigationBar(props) {
                 <Nav.Link href="/simple-chat">Simple Chat</Nav.Link>
               </Nav.Item>
               <Nav.Item className="fonts">
-                <Nav.Link href="/stripe">Stripe</Nav.Link>
+                <Nav.Link href="/checkout">Stripe</Nav.Link>
               </Nav.Item>
             </Nav>
             <Nav className="ml-auto">
