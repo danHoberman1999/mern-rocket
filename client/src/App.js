@@ -12,7 +12,7 @@ import Payment from "./components/payment";
 import User from "./components/user";
 import Engine from "./components/engineChat";
 import Simple from "./components/simpleChat";
-import Stripe from "./components/stripePayment";
+import Stripe from "./components/StripeSection/stripePayment";
 import axios from "axios";
 
 function App() {

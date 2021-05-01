@@ -143,6 +143,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Stripe Setup
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
+
+const stripe = require("stripe")(stripeSecretKey);
+
 // Setting up amazon s3
 aws.config.update({
   signatureVersion: "v4",
