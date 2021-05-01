@@ -222,7 +222,7 @@ function NavigationBar(props) {
         </Navbar>
       ) : (
         <Navbar expand="lg">
-          <Navbar.Brand href="#home">Mern-Template</Navbar.Brand>
+          <Navbar.Brand href="#home">Net Rocket</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
