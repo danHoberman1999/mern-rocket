@@ -46,6 +46,7 @@ const Styles = styled.div`
   .navbar-nav .nav-link {
     color: #fff;
     display: flex;
+    opacity: 0.8
     align-items: center;
     text-decoration: none;
     font-size: 1.3rem;
@@ -61,7 +62,7 @@ const Styles = styled.div`
     }
 
     &:hover {
-      opacity: 0.8;
+      opacity: 0.6;
       color: #fff;
     }
 
@@ -72,12 +73,8 @@ const Styles = styled.div`
   }
 
   .navbar-brand {
-    background: #de66a3;
-    background: -webkit-linear-gradient(to right, #de66a3 12%, #eeeeee 100%);
-    background: -moz-linear-gradient(to right, #de66a3 12%, #eeeeee 100%);
-    background: linear-gradient(to right, #de66a3 12%, #eeeeee 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
+    opacity: 0.8;
     justify-self: flex-start;
     cursor: pointer;
     font-size: 2.5rem;
@@ -87,8 +84,11 @@ const Styles = styled.div`
     font-weight: bold;
     text-decoration: none !important;
     &:hover {
-      opacity: 0.8;
+      opacity: 0.6;
       color: #fff;
+    }
+    @media screen and (max-width: 1060px) {
+      font-size: 2rem;
     }
   }
 

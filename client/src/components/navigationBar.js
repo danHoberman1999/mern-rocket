@@ -65,27 +65,7 @@ const Styles = styled.div`
   }
 
   .navbar-brand {
-    background: #ab68ca;
-    background: -webkit-linear-gradient(
-      to right,
-      #ab68ca 0%,
-      #de67a3 78%,
-      #ffffff 100%
-    );
-    background: -moz-linear-gradient(
-      to right,
-      #ab68ca 0%,
-      #de67a3 78%,
-      #ffffff 100%
-    );
-    background: linear-gradient(
-      to right,
-      #ab68ca 0%,
-      #de67a3 78%,
-      #ffffff 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
     justify-self: flex-start;
     cursor: pointer;
     font-size: 1.7rem;

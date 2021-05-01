@@ -61,6 +61,7 @@ export const StripeButton = styled.button`
   align-items: center;
   transition: all 0.2s ease-in-out;
   text-decoration: none !important;
+  opacity: 0.9;
 
   &:hover {
     transition: all 0.2s ease-in-out;
@@ -103,6 +104,7 @@ export const Heading = styled.h1`
   line-height: 1.1;
   font-weight: 600;
   color: #f7f8fa;
+  opacity: 0.9;
 
   @media screen and (max-width: 480px) {
     font-size: 32px;
