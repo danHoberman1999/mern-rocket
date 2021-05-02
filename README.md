@@ -4,6 +4,8 @@
 # Net Rocket
 
 <img alt="Logo" align="right" src="https://create-react-app.dev/img/logo.svg" width="20%" />
+<img alt="Logo" align="left" src="https://mern-app-5000.s3-us-west-2.amazonaws.com/rocketship.png" width="20%" />
+
 
 ### Description
 Net Rocket is a template app created for a MERN development class. As I learned how to code with React, my project became more complex. The website has no purpose besides as a fun place to practice code.
