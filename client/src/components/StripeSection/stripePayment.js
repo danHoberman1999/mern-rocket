@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import StripeCheckout from "react-stripe-checkout";
+import React from "react";
 import Stripe from "./App";
-import { toast } from "react-toastify";
 import Img4 from "../../images/svg-4.svg";
 import NavigationStripe from "../navigationStripe";
 
@@ -9,8 +7,6 @@ import {
   StripeContainer,
   ImgWrap,
   Img,
-  BtnWrap,
-  StripeButton,
   Column1,
   Column2,
   InfoWrapper,
@@ -20,10 +16,6 @@ import {
   Subtitle,
   Div,
 } from "./stripeElement";
-
-import "react-toastify/dist/ReactToastify.css";
-
-toast.configure();
 
 const StripePayment = (props) => {
   async function handleToken(token, addresses) {
@@ -42,9 +34,9 @@ const StripePayment = (props) => {
   }
 
   return (
-    <Div loggedIn={props.loggedIn}>
+    <Div>
       <StripeContainer>
-        <NavigationStripe />
+        <NavigationStripe loggedIn={props.loggedIn} />
         <InfoWrapper>
           <InfoRow>
             <Column1>

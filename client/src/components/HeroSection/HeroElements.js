@@ -10,6 +10,7 @@ export const HeroContainer = styled.div`
   height: 600px;
   position: relative;
   z-index: 1;
+  overflow: visible !important;
 
   :before {
     content: "";
@@ -38,7 +39,6 @@ export const HeroBg = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 `;
 
 export const VideoBg = styled.video`

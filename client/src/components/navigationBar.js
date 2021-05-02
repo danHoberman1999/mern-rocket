@@ -213,6 +213,9 @@ function NavigationBar(props) {
               <Nav.Item className="fonts">
                 <Nav.Link href="/checkout">Stripe</Nav.Link>
               </Nav.Item>
+              <Nav.Item className="fonts">
+                <Nav.Link href="/maps">Maps</Nav.Link>
+              </Nav.Item>
             </Nav>
             <Nav className="ml-auto">
               <Nav.Item className="log-out">

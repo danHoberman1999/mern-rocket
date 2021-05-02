@@ -10,6 +10,7 @@ import MyProfile from "./components/myProfile";
 import ProfileUpload from "./components/profileUpload";
 import Payment from "./components/payment";
 import User from "./components/user";
+import Maps from "./components/GoogleMaps/index";
 import Engine from "./components/engineChat";
 import Simple from "./components/simpleChat";
 import Stripe from "./components/StripeSection/stripePayment";
@@ -92,6 +93,10 @@ function App() {
           <Route
             path="/payment"
             render={() => <Payment loggedIn={user.loggedIn} />}
+          />
+          <Route
+            path="/maps"
+            render={() => <Maps loggedIn={user.loggedIn} />}
           />
           <Route
             path="/log-in"

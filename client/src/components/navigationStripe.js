@@ -101,34 +101,6 @@ const Styles = styled.div`
     }
   }
 
-  .log-in {
-    border-radius: 50px;
-    background: linear-gradient(to left, #ab68ca, #de67a3) #de67a3;
-    white-space: nowrap;
-    padding: 10px 22px;
-    color: #010606;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none !important;
-
-    &:hover {
-      transition: all 0.2s ease-in-out;
-      background: #fff;
-      color: #000 !important;
-    }
-
-    @media screen and (max-width: 1010px) {
-      transition: all 0.2s ease-in-out;
-      background: black !important;
-      color: #de67a3;
-      margin: 0;
-      padding: 0;
-    }
-  }
-
   .log-in-special {
     color: #000 !important;
     text-decoration: none !important;
@@ -141,11 +113,13 @@ const Styles = styled.div`
     }
   }
 
+  
+
   .log-out {
-    border-radius: 50px;
+    border-radius: 7px;
     background: linear-gradient(to left, #ab68ca, #de67a3);
     white-space: nowrap;
-    padding: 10px 22px;
+    padding: 10px 7px;
     color: #010606;
     font-size: 16px;
     outline: none;
@@ -153,6 +127,7 @@ const Styles = styled.div`
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     text-decoration: none !important;
+
 
     &:hover {
       transition: all 0.2s ease-in-out;
@@ -197,25 +172,20 @@ function NavigationBar(props) {
   return (
     <Styles>
       <Navbar expand="lg">
-        <Navbar.Brand href="http://net-rocket.herokuapp.com/">
+        <Navbar.Brand href="http://net-rocket.herokuapp.com">
           Mern Rocket
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto"></Nav>
-          <Nav className="ml-auto">
-            <Nav.Item className="fonts">
-              <Nav.Link href="/">Home</Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="fonts">
-              <Nav.Link href="/my-profile">My Profile</Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="fonts">
-              <Nav.Link href="/engine-chat">Engine Chat</Nav.Link>
-            </Nav.Item>
-
+          <Nav className="mr-auto">
             <Nav.Item className="fonts">
               <Nav.Link href="/payment">Donation</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="fonts">
+              <Nav.Link href="/checkout">Stripe</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="fonts">
+              <Nav.Link href="/maps">Maps</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
