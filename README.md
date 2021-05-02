@@ -15,8 +15,7 @@ Net Rocket is a template app created for a MERN development class. As I learned 
 git init
 git clone
 npm install
-cd client
-npm install
+npm start
 ```
 
 ### Usage
