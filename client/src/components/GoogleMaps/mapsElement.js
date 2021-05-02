@@ -51,46 +51,6 @@ export const StripeContainer = styled.div`
   overflow: hidden;
 `;
 
-export const StripeButton = styled.button`
-  border-radius: 3px;
-  background: #12c2e9; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #f64f59,
-    #c471ed,
-    #12c2e9
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #f64f59,
-    #c471ed,
-    #12c2e9
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  white-space: nowrap;
-  padding: 14px 48px;
-  color: #fff;
-  font-size: 23px;
-  font-weight: 500;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none !important;
-  opacity: 0.9;
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    opacity: 0.7;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 18px;
-  }
-`;
-
 export const ImgWrap = styled.div`
   max-width: 600px;
   height: 100%;
@@ -133,7 +93,8 @@ export const Subtitle = styled.p`
   max-width: 440px;
   font-size: 18px;
   line-height: 24px;
-  color: #ada5ca;
+  color: #fff;
+  opacity: 0.8;
 `;
 
 export const InfoWrapper = styled.div`

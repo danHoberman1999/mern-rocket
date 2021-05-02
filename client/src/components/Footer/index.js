@@ -40,7 +40,7 @@ const Footer = () => {
         </FooterLinksContainer>
         <SocialMedia>
           <SocialMediaWrap>
-            <SocialLogo to="/">Mern Rocket</SocialLogo>
+            <SocialLogo to="/">Net Rocket</SocialLogo>
             <WebsiteRights>
               Hoberman Design © {new Date().getFullYear()} All rights reserved.
             </WebsiteRights>

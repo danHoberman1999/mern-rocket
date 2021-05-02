@@ -12,8 +12,10 @@ import Payment from "./components/payment";
 import User from "./components/user";
 import Maps from "./components/GoogleMaps/index";
 import Engine from "./components/engineChat";
+import Chess from "./components/ChessGame/index";
 import Simple from "./components/simpleChat";
 import Stripe from "./components/StripeSection/stripePayment";
+import Apps from "./components/AppsPage/index";
 import axios from "axios";
 
 function App() {
@@ -99,8 +101,16 @@ function App() {
             render={() => <Maps loggedIn={user.loggedIn} />}
           />
           <Route
+            path="/chess"
+            render={() => <Chess loggedIn={user.loggedIn} />}
+          />
+          <Route
             path="/log-in"
             render={() => <LogIn loggedIn={user.loggedIn} />}
+          />
+          <Route
+            path="/apps"
+            render={() => <Apps loggedIn={user.loggedIn} />}
           />
           <Route
             path="/privacy-policy"

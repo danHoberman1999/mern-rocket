@@ -12,9 +12,12 @@ import {
   HeroBtnWrapper,
   ArrowForward,
   ArrowRight,
+  HeroLogged,
 } from "./HeroElements";
 
-const HeroSection = () => {
+const HeroSection = (props) => {
+  const loggedIn = props.loggedIn;
+
   const [hover, setHover] = useState(false);
 
   const onHover = () => {
@@ -27,21 +30,25 @@ const HeroSection = () => {
         <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
       </HeroBg>
       <HeroContent>
-        <HeroH1>Mern Rocket</HeroH1>
+        <HeroH1>Net Rocket</HeroH1>
         <HeroP>
           Created by Daniel Hoberman with help from Karsen Hansen, Evan Conrad,
           and stack overflow
         </HeroP>
         <HeroBtnWrapper>
-          <Button
-            to="/sign-up"
-            onMouseEnter={onHover}
-            onMouseLeave={onHover}
-            primary="true"
-            dark="true"
-          >
-            Get started {hover ? <ArrowForward /> : <ArrowRight />}
-          </Button>
+          {loggedIn ? (
+            <HeroLogged>Welcome to Net Rocket</HeroLogged>
+          ) : (
+            <Button
+              to="/sign-up"
+              onMouseEnter={onHover}
+              onMouseLeave={onHover}
+              primary="true"
+              dark="true"
+            >
+              Get started {hover ? <ArrowForward /> : <ArrowRight />}
+            </Button>
+          )}
         </HeroBtnWrapper>
       </HeroContent>
     </HeroContainer>

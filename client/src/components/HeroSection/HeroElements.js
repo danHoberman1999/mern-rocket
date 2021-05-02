@@ -90,6 +90,23 @@ export const HeroP = styled.p`
   }
 `;
 
+export const HeroLogged = styled.p`
+  margin-top: 24px;
+  color: #635bff;
+  font-weight: 500;
+  font-size: 32px;
+  text-align: center;
+  max-width: 600px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 18px;
+  }
+`;
+
 export const HeroBtnWrapper = styled.div`
   margin-top: 32px;
   display: flex;

@@ -159,6 +159,12 @@ const Styles = styled.div`
   .fonts {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   }
+
+  .special-apps {
+    color: #76c4ae !important;
+    font-size: 17px;
+    font-weight: 500;
+  }
 `;
 
 function NavigationBar(props) {
@@ -193,9 +199,6 @@ function NavigationBar(props) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Item className="fonts">
-                <Nav.Link href="/">Home</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
                 <Nav.Link href="/my-profile">My Profile</Nav.Link>
               </Nav.Item>
               <Nav.Item className="fonts">
@@ -211,10 +214,9 @@ function NavigationBar(props) {
                 <Nav.Link href="/simple-chat">Simple Chat</Nav.Link>
               </Nav.Item>
               <Nav.Item className="fonts">
-                <Nav.Link href="/checkout">Stripe</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="fonts">
-                <Nav.Link href="/maps">Maps</Nav.Link>
+                <Nav.Link className="special-apps" href="/apps">
+                  Apps
+                </Nav.Link>
               </Nav.Item>
             </Nav>
             <Nav className="ml-auto">
@@ -234,9 +236,6 @@ function NavigationBar(props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Item className="fonts">
-                <Nav.Link href="/">Home</Nav.Link>
-              </Nav.Item>
               <Nav.Item className="fonts">
                 <Nav.Link href="/privacy-policy">Privacy Policy</Nav.Link>
               </Nav.Item>

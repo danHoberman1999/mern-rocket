@@ -173,19 +173,19 @@ function NavigationBar(props) {
     <Styles>
       <Navbar expand="lg">
         <Navbar.Brand href="http://net-rocket.herokuapp.com">
-          Mern Rocket
+          Rocket Apps
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Item className="fonts">
-              <Nav.Link href="/payment">Donation</Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="fonts">
               <Nav.Link href="/checkout">Stripe</Nav.Link>
             </Nav.Item>
             <Nav.Item className="fonts">
               <Nav.Link href="/maps">Maps</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="fonts">
+              <Nav.Link href="/chess">Chess</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
